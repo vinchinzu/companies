@@ -1,0 +1,170 @@
+# ============================================
+# Company Research Tool - .gitignore
+# ============================================
+
+# ----------------------
+# Environment & Secrets
+# ----------------------
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+secrets.yaml
+
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# ----------------------
+# IDE & Editors
+# ----------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# ----------------------
+# OS Files
+# ----------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ----------------------
+# Large Data Files
+# ----------------------
+# PDFs (SEC complaints - can be re-downloaded)
+data/pdfs/
+data/pdfs/**
+data/*.pdf
+
+# OpenSanctions data (downloaded via setup script)
+data/opensanctions/
+data/opensanctions/**
+# But keep empty .gitkeep to preserve directory structure
+!data/opensanctions/.gitkeep
+
+# ICIJ Offshore Leaks data (downloaded via setup script)
+data/icij/
+data/icij/**
+!data/icij/.gitkeep
+
+# Large combined databases (regenerated from sources)
+data/fraudulent_companies.csv
+data/combined_database.csv
+data/fraud_database.csv
+
+# Consolidated sanctions (100K+ entities, ~50MB)
+data/opensanctions/consolidated_names.txt
+data/opensanctions/consolidated_entities.json
+
+# PEPs data (1M+ entities, ~100MB)
+data/opensanctions/peps_names.txt
+data/opensanctions/peps_entities.json
+
+# Brave API response caches
+data/brave_api_cache/
+data/brave_api_cache/**
+!data/brave_api_cache/.gitkeep
+
+# Downloaded OFAC names (regenerated from dataset)
+data/opensanctions/us_ofac_press_releases.names.txt
+
+# Temporary download files
+*.download
+*.part
+*.tmp.download
+
+# ----------------------
+# Keep These Files
+# ----------------------
+# Sample/example data (small files for demo)
+!data/sample_input.xlsx
+!data/sample_companies.csv
+!data/example_results.csv
+
+# SEC enforcement JSON (smaller, useful reference)
+!data/sec_enforcement.json
+
+# Example API responses (for documentation)
+!data/examples/
+
+# ----------------------
+# Logs & Temp Files
+# ----------------------
+*.log
+logs/
+download_log.txt
+*.tmp
+*.temp
+
+# ----------------------
+# Jupyter Notebooks
+# ----------------------
+.ipynb_checkpoints/
+*.ipynb
+
+# ----------------------
+# Test & Coverage
+# ----------------------
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# ----------------------
+# Build & Distribution
+# ----------------------
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ----------------------
+# Streamlit
+# ----------------------
+.streamlit/secrets.toml

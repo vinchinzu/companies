@@ -1,0 +1,11 @@
+company_name,case_date,fraud_type,penalty_amount,jurisdiction,source,description,is_synthetic
+Terraform Labs Pte. Ltd.,2024-04-26,Securities Fraud,4500000000,SG,SEC Litigation,Crypto asset securities fraud; $4.5B settlement after jury verdict,False
+FTX Trading Ltd.,2022-12-13,Securities Fraud,,BS,SEC/DOJ,Massive crypto exchange fraud and misappropriation,False
+BitConnect,2021-09-01,Ponzi Scheme,2400000000,US,SEC Enforcement,$2.4B crypto Ponzi scheme,False
+Theranos Inc.,2018-03-14,Securities Fraud,,US-CA,SEC Enforcement,Massive fraud involving fake blood testing technology,False
+Enron Corp.,2001-12-02,Accounting Fraud,,US-TX,SEC Enforcement,One of largest accounting frauds in history; bankruptcy,False
+WorldCom Inc.,2002-06-25,Accounting Fraud,,US,SEC Enforcement,$11B accounting fraud; largest bankruptcy at time,False
+Wirecard AG,2020-06-25,Accounting Fraud,,DE,SEC/International,German fintech fraud; $2B in fake cash balances,False
+Luckin Coffee Inc.,2020-07-01,Accounting Fraud,180000000,CN,SEC Enforcement,Fabricated $300M in sales; $180M settlement,False
+Nikola Corporation,2021-07-29,Securities Fraud,125000000,US-AZ,SEC Enforcement,Misled investors about technology capabilities,False
+HyperFund,2024-01-15,Pyramid Scheme,1700000000,US,SEC Enforcement,Crypto pyramid scheme raising over $1.7B worldwide,False

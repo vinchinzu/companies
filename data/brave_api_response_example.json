@@ -1,0 +1,864 @@
+{
+  "query": {
+    "original": "Terraform Labs official website company",
+    "show_strict_warning": false,
+    "is_navigational": false,
+    "is_news_breaking": false,
+    "spellcheck_off": true,
+    "country": "us",
+    "bad_results": false,
+    "should_fallback": false,
+    "postal_code": "",
+    "city": "",
+    "header_country": "",
+    "more_results_available": true,
+    "state": ""
+  },
+  "mixed": {
+    "type": "mixed",
+    "main": [
+      {
+        "type": "web",
+        "index": 0,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 1,
+        "all": false
+      },
+      {
+        "type": "videos",
+        "all": true
+      },
+      {
+        "type": "web",
+        "index": 2,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 3,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 4,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 5,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 6,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 7,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 8,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 9,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 10,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 11,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 12,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 13,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 14,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 15,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 16,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 17,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 18,
+        "all": false
+      },
+      {
+        "type": "web",
+        "index": 19,
+        "all": false
+      }
+    ],
+    "top": [],
+    "side": []
+  },
+  "type": "search",
+  "videos": {
+    "type": "videos",
+    "results": [
+      {
+        "type": "video_result",
+        "url": "https://www.cnbc.com/video/2022/04/12/terralabs-ceo-bitcoin-buy-shib-rallies-blackrock-funds-circle-crypto-world.html",
+        "title": "Terraform Labs CEO on $1.7 billion bitcoin buy, SHIB rallies and ...",
+        "description": "CNBC Crypto World features the latest news and daily trading updates from the digital currency markets and provides viewers with a look at what's ahead with high-profile interviews, explainers, and unique stories from the ever-changing crypto industry. On today's show, CNBC's Kate Rooney talks ...",
+        "age": "April 13, 2022",
+        "page_age": "2022-04-13T14:17:37",
+        "fetched_content_timestamp": 1758742823,
+        "video": {
+          "duration": "09:41",
+          "publisher": "CNBC"
+        },
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "cnbc.com",
+          "hostname": "www.cnbc.com",
+          "favicon": "https://imgs.search.brave.com/Y-kiUECkMSGd7lOmrP2aTYHW7-HGeiVhcw9XMTUFn-Y/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTJhNzM1OTQ2/YTZmNDZiOGM2ZDVk/OTUzOWY3ZThlZmYz/YzNkNDk5MDcyOGI2/MzEzMzNmYjM1ZGRk/YjdhNGVlYy93d3cu/Y25iYy5jb20v",
+          "path": "\u203a video  \u203a 2022  \u203a 04  \u203a 12  \u203a terralabs-ceo-bitcoin-buy-shib-rallies-blackrock-funds-circle-crypto-world.html"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/L3BZ8JvFplEkTs-6SJr9nUsKxtVMYHtsn2Pf4YOxaeM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5jbmJjZm0uY29t/L2FwaS92MS9pbWFn/ZS8xMDcwNDU4NTkt/MDQxMl9DV19USFVN/Qi5qcGc_dj0xNjQ5/NzkwNzYwJmFtcDt3/PTE5MjAmYW1wO2g9/MTA4MA",
+          "original": "https://image.cnbcfm.com/api/v1/image/107045859-0412_CW_THUMB.jpg?v=1649790760&amp;w=1920&amp;h=1080"
+        }
+      },
+      {
+        "type": "video_result",
+        "url": "https://www.youtube.com/watch?v=SwnD0SxEv10",
+        "title": "Terraform Labs CEO on $1.7B bitcoin buy, SHIB rallies and BlackRock ...",
+        "description": "CNBC Crypto World features the latest news and daily trading updates from the digital currency markets and provides viewers with a look at what\u2019s ahead with ...",
+        "age": "April 12, 2022",
+        "page_age": "2022-04-12T19:45:27",
+        "fetched_content_timestamp": 1764499318,
+        "video": {
+          "duration": "09:42",
+          "creator": "CNBC Television",
+          "publisher": "YouTube"
+        },
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "youtube.com",
+          "hostname": "www.youtube.com",
+          "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+          "path": "\u203a watch"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/RxXMAy4BDjH9Ti1ojHcbctNA0aK6W4lNh0Iu4f4x-Mo/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9T/d25EMFN4RXYxMC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+          "original": "https://i.ytimg.com/vi/SwnD0SxEv10/maxresdefault.jpg"
+        }
+      },
+      {
+        "type": "video_result",
+        "url": "https://www.youtube.com/watch?v=YqveZ8lx578",
+        "title": "Do Kwon receives 15 year prison sentence for $40 billion stablecoin ...",
+        "description": "Terraform Labs co-founder Do Kwon is sentenced to 15 years in prison over the $40 billion Terra crash, as the Trump Administration faces questions about easi...",
+        "age": "December 11, 2025",
+        "page_age": "2025-12-11T23:47:17",
+        "fetched_content_timestamp": 1765499079,
+        "video": {
+          "duration": "01:07",
+          "creator": "CNBC Television",
+          "publisher": "YouTube"
+        },
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "youtube.com",
+          "hostname": "www.youtube.com",
+          "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+          "path": "\u203a watch"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/yAK0egU0fVHK6BjMEp0fM20v-OXWFwdfNEACRdhxRhw/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9Z/cXZlWjhseDU3OC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+          "original": "https://i.ytimg.com/vi/YqveZ8lx578/maxresdefault.jpg"
+        }
+      },
+      {
+        "type": "video_result",
+        "url": "https://www.youtube.com/watch?v=7o_U4DmWd8g",
+        "title": "Terraform Labs CEO on US Crypto Regulation: 'It's Not That ...",
+        "description": "Amidst a legal battle with the U.S. SEC, CEO of Terraform Labs Do Kwon and a top 10 winner of CoinDesk's Most Influential 2021, discusses his take on the imp...",
+        "age": "December 9, 2021",
+        "page_age": "2021-12-09T18:17:31",
+        "fetched_content_timestamp": 1764499318,
+        "video": {
+          "duration": "15:01",
+          "creator": "CoinDesk",
+          "publisher": "YouTube"
+        },
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "youtube.com",
+          "hostname": "www.youtube.com",
+          "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+          "path": "\u203a watch"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/h5MfP78OCdwEX9j7npZ8p7CJzrU1a2xRu3_MLrMh92E/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS83/b19VNERtV2Q4Zy9t/YXhyZXNkZWZhdWx0/LmpwZw",
+          "original": "https://i.ytimg.com/vi/7o_U4DmWd8g/maxresdefault.jpg"
+        }
+      },
+      {
+        "type": "video_result",
+        "url": "https://www.youtube.com/watch?v=zXZFc3wMe98",
+        "title": "This Crypto Collapse Wiped $40B\u2026 - YouTube",
+        "description": "In May 2022, Terra\u2019s crypto ecosystem collapsed, wiping out $40 billion and triggering a broader market selloff. Find out how its algorithmic stablecoin and ...",
+        "age": "August 18, 2025",
+        "page_age": "2025-08-18T10:40:27",
+        "fetched_content_timestamp": 1767353802,
+        "video": {
+          "duration": "05:12",
+          "creator": "CoinGecko",
+          "publisher": "YouTube"
+        },
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "youtube.com",
+          "hostname": "www.youtube.com",
+          "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+          "path": "\u203a watch"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/F5YM8KCTzOTcAALRzimQ1oIaBbKygU0xlMQ3fnUhdBw/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS96/WFpGYzN3TWU5OC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+          "original": "https://i.ytimg.com/vi/zXZFc3wMe98/maxresdefault.jpg"
+        }
+      }
+    ],
+    "mutated_by_goggles": false
+  },
+  "web": {
+    "type": "search",
+    "results": [
+      {
+        "title": "Terraform Labs 2025 Company Profile: Valuation, Funding & Investors | PitchBook",
+        "url": "https://pitchbook.com/profiles/company/232292-44",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Terraform Labs is a Private company.",
+        "profile": {
+          "name": "PitchBook",
+          "url": "https://pitchbook.com/profiles/company/232292-44",
+          "long_name": "pitchbook.com",
+          "img": "https://imgs.search.brave.com/9SXTwO_ggm-Wbzj6fUdpmg-ROmfDr2lO0sZWyLPTJn0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjMzOTY4Zjlm/ZjFkMzAzNzMwZWRi/NGJhYjA3NzU1N2M3/MjNhN2U0YzI2OTNi/YzBhNjZhZDU5Y2E4/YmQ1NGZiZS9waXRj/aGJvb2suY29tLw"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "faq",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "pitchbook.com",
+          "hostname": "pitchbook.com",
+          "favicon": "https://imgs.search.brave.com/9SXTwO_ggm-Wbzj6fUdpmg-ROmfDr2lO0sZWyLPTJn0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjMzOTY4Zjlm/ZjFkMzAzNzMwZWRi/NGJhYjA3NzU1N2M3/MjNhN2U0YzI2OTNi/YzBhNjZhZDU5Y2E4/YmQ1NGZiZS9waXRj/aGJvb2suY29tLw",
+          "path": "\u203a profiles  \u203a company  \u203a 232292-44"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/epn-7pR-EFGCWeaHvgHuQWSMeoAx5jSEWp54Vwcbtrs/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9waXRj/aGJvb2suY29tL2lt/Zy9zbS9QaXRjaEJv/b2stUHJvZmlsZS5q/cGc_dXE9bGdBSGp3/a2g",
+          "original": "https://pitchbook.com/img/sm/PitchBook-Profile.jpg?uq=lgAHjwkh",
+          "logo": false
+        }
+      },
+      {
+        "title": "Terraform labs Pte Ltd - Company Profile and News - Bloomberg Markets",
+        "url": "https://www.bloomberg.com/profile/company/1741983D:SP",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Company profile page for Terraform labs Pte Ltd including stock price, company news, executives, board members, and contact information",
+        "profile": {
+          "name": "Bloomberg",
+          "url": "https://www.bloomberg.com/profile/company/1741983D:SP",
+          "long_name": "bloomberg.com",
+          "img": "https://imgs.search.brave.com/JdflViMvNONX2cNzOInZ7EQWaTzeYAgL8uCSDVicA8Y/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDJhNjMyMGE1/YzY3MzRjMDAzZDU5/YzJiMWZlZmI4Yjkx/OWQyN2IzYzU1MjYw/ZDQyMjVjYzdjZWRi/ZTM5Njg4ZC93d3cu/Ymxvb21iZXJnLmNv/bS8"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "bloomberg.com",
+          "hostname": "www.bloomberg.com",
+          "favicon": "https://imgs.search.brave.com/JdflViMvNONX2cNzOInZ7EQWaTzeYAgL8uCSDVicA8Y/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDJhNjMyMGE1/YzY3MzRjMDAzZDU5/YzJiMWZlZmI4Yjkx/OWQyN2IzYzU1MjYw/ZDQyMjVjYzdjZWRi/ZTM5Njg4ZC93d3cu/Ymxvb21iZXJnLmNv/bS8",
+          "path": "\u203a profile  \u203a company  \u203a 1741983D:SP"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/oAKTaEurLKRurIOD0lVm3oG4cGCk4Wb36Utt6JNM5g4/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/Ymxvb21iZXJnLmNv/bS9pbWFnZXMvbWFy/a2V0cy1sb2dvLnBu/Zw",
+          "original": "https://www.bloomberg.com/images/markets-logo.png",
+          "logo": true
+        }
+      },
+      {
+        "title": "Terraform Labs | LinkedIn",
+        "url": "https://sg.linkedin.com/company/terraform-labs",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Terraform Labs | 12,074 followers on LinkedIn. Fueled by a passionate community and deep developer talent pool, the Terra blockchain is built to enable the next generation of Web3 products and services",
+        "profile": {
+          "name": "LinkedIn",
+          "url": "https://sg.linkedin.com/company/terraform-labs",
+          "long_name": "sg.linkedin.com",
+          "img": "https://imgs.search.brave.com/vd30_fQ9oTv-64I7YZ3Fk0RZxRpl6bN1EZegqJKLcxY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjJlOTcwMTUx/MWIzZWM4NzkyNGM4/MzM2OGFiZjFkNmEy/NDAxMDc1OGQ2MDMw/YWM0ZTc0ZDg1ZmE5/YTczMTYyNS9zZy5s/aW5rZWRpbi5jb20v"
+        },
+        "language": "sg",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "sg.linkedin.com",
+          "hostname": "sg.linkedin.com",
+          "favicon": "https://imgs.search.brave.com/vd30_fQ9oTv-64I7YZ3Fk0RZxRpl6bN1EZegqJKLcxY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjJlOTcwMTUx/MWIzZWM4NzkyNGM4/MzM2OGFiZjFkNmEy/NDAxMDc1OGQ2MDMw/YWM0ZTc0ZDg1ZmE5/YTczMTYyNS9zZy5s/aW5rZWRpbi5jb20v",
+          "path": "\u203a company  \u203a terraform-labs"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/0gztAHYf8YDGD8cbDw3_FBw2A098ap-LB_HW_fjLnD0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5saWNkbi5jb20v/ZG1zL2ltYWdlL0M1/NjBCQVFFY0dUTEFz/NHBlZFEvY29tcGFu/eS1sb2dvXzIwMF8y/MDAvMC8xNjU2MTAx/MjQyMjA3L3RlcnJh/Zm9ybV9sYWJzX2xv/Z28_ZT0yMTQ3NDgz/NjQ3JmFtcDt2PWJl/dGEmYW1wO3Q9ZXlM/MXN4RzZWVEt0OTk5/X1RhZ3pNWTduU2ZM/X2NVVHJMVVZiR3lu/Sktqdw",
+          "original": "https://media.licdn.com/dms/image/C560BAQEcGTLAs4pedQ/company-logo_200_200/0/1656101242207/terraform_labs_logo?e=2147483647&amp;v=beta&amp;t=eyL1sxG6VTKt999_TagzMY7nSfL_cUTrLUVbGynJKjw",
+          "logo": true
+        }
+      },
+      {
+        "title": "Terraform Labs Pte Ltd | Reuters",
+        "url": "https://www.reuters.com/company/terraform-labs-pte-ltd/",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Montenegro&#x27;s top court on Friday ... legality of its extradition ruling, the court said on its website. ... Terraform Labs received a U.S. bankruptcy judge&#x27;s permission on Tuesday to hire Dentons to defend the company from a U.S....",
+        "profile": {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/company/terraform-labs-pte-ltd/",
+          "long_name": "reuters.com",
+          "img": "https://imgs.search.brave.com/g-LRPAPxrx_Eqo7F4IKC-Guqa4ONApD9n_VKZlqfqWo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzE0MWM3N2Ji/ZjQ3ZDhmYzI3NjMz/ODNjYTRiMGI4MjM4/OTExMzRkM2E1ODI4/MjI4YzA0ZWQ0OTRk/YWY5YTQwMy93d3cu/cmV1dGVycy5jb20v"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "reuters.com",
+          "hostname": "www.reuters.com",
+          "favicon": "https://imgs.search.brave.com/g-LRPAPxrx_Eqo7F4IKC-Guqa4ONApD9n_VKZlqfqWo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzE0MWM3N2Ji/ZjQ3ZDhmYzI3NjMz/ODNjYTRiMGI4MjM4/OTExMzRkM2E1ODI4/MjI4YzA0ZWQ0OTRk/YWY5YTQwMy93d3cu/cmV1dGVycy5jb20v",
+          "path": "\u203a company  \u203a terraform-labs-pte-ltd"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/Rw16Ht7pDG9lFseZgcqjv3iGXUJPFblf7kloVnXMPyE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jbG91/ZGZyb250LXVzLWVh/c3QtMi5pbWFnZXMu/YXJjcHVibGlzaGlu/Zy5jb20vcmV1dGVy/cy9aQ1E1U1BCS05O/R1hESlVZVkZSVE0z/NkpZTS5qcGc",
+          "original": "https://cloudfront-us-east-2.images.arcpublishing.com/reuters/ZCQ5SPBKNNGXDJUYVFRTM36JYM.jpg",
+          "logo": false
+        }
+      },
+      {
+        "title": "Terraform Labs | Golden",
+        "url": "https://golden.com/wiki/Terraform_Labs-8AXGGDR",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Terraform Labs is a company that has developed a blockchain, called Terra, for Web3 services and products. It was founded in 2018 and has its headquarters in Singapore. The company was founded by Do Kwon and Daniel Shin. It has raised more than $200 million in funds from investment firms such as Lightspeed Venture Partners, Galaxy Digital, and DeFiance Capital.",
+        "profile": {
+          "name": "Golden",
+          "url": "https://golden.com/wiki/Terraform_Labs-8AXGGDR",
+          "long_name": "golden.com",
+          "img": "https://imgs.search.brave.com/DcnZSTGYxiMH6Y-lI7RG80peSbmigtMmgmjmk_BEbzY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmIyNjJjNWNh/ZDg5YjdhZWU5YWJh/MTBjMzA2OTg5ODgz/Yjc1ZTRiNmEwNGM3/ZTY4YzYzMTI5NDk3/NGNiNDNhZS9nb2xk/ZW4uY29tLw"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "golden.com",
+          "hostname": "golden.com",
+          "favicon": "https://imgs.search.brave.com/DcnZSTGYxiMH6Y-lI7RG80peSbmigtMmgmjmk_BEbzY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmIyNjJjNWNh/ZDg5YjdhZWU5YWJh/MTBjMzA2OTg5ODgz/Yjc1ZTRiNmEwNGM3/ZTY4YzYzMTI5NDk3/NGNiNDNhZS9nb2xk/ZW4uY29tLw",
+          "path": "\u203a wiki  \u203a Terraform_Labs-8AXGGDR"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/GBQT-oP5RyZ5F9-VHXZ1172KNFvZTwEwuqTy_IPi7Lw/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS10aHVtYnMuZ29s/ZGVuLmNvbS9YcDQ3/R0lPaUtXS202VHhQ/bWdSQWwzTTZxaEE9/LzEwMHgxMDAvc21h/cnQvZ29sZGVuLXN0/b3JhZ2UtcHJvZHVj/dGlvbi5nb2xkZW4t/c3VwcG9ydC5jb20l/MkZ0b3BpY19pbWFn/ZXMlMkZhMmM2NDZl/ZmVmNDg0MmQ4Yjcx/ZTJjOTZhODI4Y2Ex/Yi5wbmc",
+          "original": "https://media-thumbs.golden.com/Xp47GIOiKWKm6TxPmgRAl3M6qhA=/100x100/smart/golden-storage-production.golden-support.com%2Ftopic_images%2Fa2c646efef4842d8b71e2c96a828ca1b.png",
+          "logo": false
+        }
+      },
+      {
+        "title": "Terra - Crunchbase Company Profile & Funding",
+        "url": "https://www.crunchbase.com/organization/terra-d41a",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Terraform Labs \u00b7 Operating Status \u00b7 Active \u00b7 Number of Exits \u00b7 obfuscated \u00b7 obfuscation \u00b7 Company Type \u00b7 For Profit \u00b7 Founders \u00b7 Daniel Shin, Do Kwon \u00b7 About the Company \u00b7 Terra is a price-stable cryptocurrency designed for mass adoption. It builds financial infrastructure for the next generation of decentralized applications.",
+        "profile": {
+          "name": "Crunchbase",
+          "url": "https://www.crunchbase.com/organization/terra-d41a",
+          "long_name": "crunchbase.com",
+          "img": "https://imgs.search.brave.com/XeBQZ7s3vc5JqDU6Po7ADNs0E1W-Cw07jYI9SaF_k9c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzczZDk0MDEy/NDYwMzBjYTE2MWYx/NzhhOGRkZGE4YmQz/NTJlNmMwNDY4N2Ew/MjcwNGU0Mzc4NDA3/YTBlMGIxMy93d3cu/Y3J1bmNoYmFzZS5j/b20v"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "faq",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "crunchbase.com",
+          "hostname": "www.crunchbase.com",
+          "favicon": "https://imgs.search.brave.com/XeBQZ7s3vc5JqDU6Po7ADNs0E1W-Cw07jYI9SaF_k9c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYzczZDk0MDEy/NDYwMzBjYTE2MWYx/NzhhOGRkZGE4YmQz/NTJlNmMwNDY4N2Ew/MjcwNGU0Mzc4NDA3/YTBlMGIxMy93d3cu/Y3J1bmNoYmFzZS5j/b20v",
+          "path": "\u203a organization  \u203a terra-d41a"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/1keaNWVwjrxQMVMtHlb3XPOgndqMiIie2rUBLRQh1cU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3J1bmNoYmFz/ZS5jb20vaW1hZ2Uv/dXBsb2FkL2NfcGFk/LGhfMjU2LHdfMjU2/LGZfYXV0byxxX2F1/dG86ZWNvLGRwcl8x/L2IycWFmbmk0enlz/cmh1cGxiaHVmP2lr/LXNhbml0aXplU3Zn/PXRydWU",
+          "original": "https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/b2qafni4zysrhuplbhuf?ik-sanitizeSvg=true",
+          "logo": true
+        }
+      },
+      {
+        "title": "Terraform Labs | CryptoSlate Directory",
+        "url": "https://cryptoslate.com/companies/terraform-labs/",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Close suggestions Autocomplete ready Start typing to surface tickers, people, and companies. ... Terraform Labs is a startup that created Terra, a blockchain protocol and payment platform used for algorithmic stablecoins.",
+        "page_age": "2023-07-21T16:33:10",
+        "profile": {
+          "name": "CryptoSlate",
+          "url": "https://cryptoslate.com/companies/terraform-labs/",
+          "long_name": "cryptoslate.com",
+          "img": "https://imgs.search.brave.com/1ucn8rOzyLCW21YmroS2bLm9RJHoxEzz5sgIF1AqYlw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjY4YjEwMDQ4/NjFhYjE0MzM0ZjBk/NDllNzVmYThiZGVk/NTg5YjY1YzZkZjY4/ZmJiN2U3NGMzOGRl/MTEyODA4NS9jcnlw/dG9zbGF0ZS5jb20v"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "cryptoslate.com",
+          "hostname": "cryptoslate.com",
+          "favicon": "https://imgs.search.brave.com/1ucn8rOzyLCW21YmroS2bLm9RJHoxEzz5sgIF1AqYlw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMjY4YjEwMDQ4/NjFhYjE0MzM0ZjBk/NDllNzVmYThiZGVk/NTg5YjY1YzZkZjY4/ZmJiN2U3NGMzOGRl/MTEyODA4NS9jcnlw/dG9zbGF0ZS5jb20v",
+          "path": "  \u203a home  \u203a companies  \u203a terraform labs"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/v0QxlzyltOFNSBnEyCHwTIZTsaH2n4eT0eR9srGFeeg/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jcnlw/dG9zbGF0ZS5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjIv/MDMvdGVycmEtY292/ZXIuanBn",
+          "original": "https://cryptoslate.com/wp-content/uploads/2022/03/terra-cover.jpg",
+          "logo": false
+        },
+        "age": "July 21, 2023"
+      },
+      {
+        "title": "Terra (blockchain) - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Terra_(blockchain)",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Terraform Labs Pte. Ltd., the company behind Terra, is incorporated in Singapore but did not submit an application for a licence under the Payment Services Act according to The Straits Times. It is also not a notified entity, meaning it has not been granted temporary exemption from holding a licence by the Monetary Authority of Singapore.",
+        "page_age": "2025-12-15T03:17:46",
+        "profile": {
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Terra_(blockchain)",
+          "long_name": "en.wikipedia.org",
+          "img": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "deep_results": {
+          "buttons": [
+            {
+              "type": "button_result",
+              "title": "Design",
+              "url": "https://en.wikipedia.org/wiki/Terra_(blockchain)#Design"
+            },
+            {
+              "type": "button_result",
+              "title": "History",
+              "url": "https://en.wikipedia.org/wiki/Terra_(blockchain)#History"
+            },
+            {
+              "type": "button_result",
+              "title": "Licensing and regulatory issues",
+              "url": "https://en.wikipedia.org/wiki/Terra_(blockchain)#Licensing_and_regulatory_issues"
+            },
+            {
+              "type": "button_result",
+              "title": "Controversies and legal challenges",
+              "url": "https://en.wikipedia.org/wiki/Terra_(blockchain)#Controversies_and_legal_challenges"
+            }
+          ]
+        },
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "en.wikipedia.org",
+          "hostname": "en.wikipedia.org",
+          "favicon": "https://imgs.search.brave.com/m6XxME4ek8DGIUcEPCqjRoDjf2e54EwL9pQzyzogLYk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNjQwNGZhZWY0/ZTQ1YWUzYzQ3MDUw/MmMzMGY3NTQ0ZjNj/NDUwMDk5ZTI3MWRk/NWYyNTM4N2UwOTE0/NTI3ZDQzNy9lbi53/aWtpcGVkaWEub3Jn/Lw",
+          "path": "\u203a wiki  \u203a Terra_(blockchain)"
+        },
+        "age": "1 month ago"
+      },
+      {
+        "title": "Terraform Labs Information",
+        "url": "https://rocketreach.co/terraform-labs-profile_b4552c05fc97cb39",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Fueled by a passionate community and deep developer talent pool, the Terra blockchain is built to enable the next generation of Web3 products and services View Top Employees from Terraform Labs",
+        "profile": {
+          "name": "RocketReach",
+          "url": "https://rocketreach.co/terraform-labs-profile_b4552c05fc97cb39",
+          "long_name": "rocketreach.co",
+          "img": "https://imgs.search.brave.com/y-aFq-WaKqofgOTtPvSOApZy753X8_vhfbYo4uv3b2k/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkY2EzYWQy/MDJmZjU5NGYxZjhi/Y2E2OTY5NjI1NWEz/ODdiYTU1ZTZlNThh/OWI5MGJiMTcwZDll/NzUwZjdjMi9yb2Nr/ZXRyZWFjaC5jby8"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "rocketreach.co",
+          "hostname": "rocketreach.co",
+          "favicon": "https://imgs.search.brave.com/y-aFq-WaKqofgOTtPvSOApZy753X8_vhfbYo4uv3b2k/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VkY2EzYWQy/MDJmZjU5NGYxZjhi/Y2E2OTY5NjI1NWEz/ODdiYTU1ZTZlNThh/OWI5MGJiMTcwZDll/NzUwZjdjMi9yb2Nr/ZXRyZWFjaC5jby8",
+          "path": "\u203a terraform-labs-profile_b4552c05fc97cb39"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/Xdx3Thyxs2u5UxYiEjEynsR_7MhuvSMcZW94F6eURXY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9kMWhi/cHIwOXB3ejBzay5j/bG91ZGZyb250Lm5l/dC9sb2dvX3VybC90/ZXJyYWZvcm0tbGFi/cy0xMTk3YWQyNQ",
+          "original": "https://d1hbpr09pwz0sk.cloudfront.net/logo_url/terraform-labs-1197ad25",
+          "logo": true
+        }
+      },
+      {
+        "title": "Terraform Labs Pte. Ltd. Wind Down Trust Crypto Loss Claims",
+        "url": "https://restructuring.ra.kroll.com/Terraform/",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "If you have filed a Crypto Loss Claim and wish to withdraw it, you may do so by submitting a CLC Claim Withdrawal form. Completed CLC Claim Withdrawal form(s) can be sent to Terraforminfo@ra.kroll.com.",
+        "profile": {
+          "name": "Kroll Restructuring",
+          "url": "https://restructuring.ra.kroll.com/Terraform/",
+          "long_name": "restructuring.ra.kroll.com",
+          "img": "https://imgs.search.brave.com/1YN6j-rBRoRjyQMI8xPOqFWpBsOLcyaLp_DJKIRZXnE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGZmNzA3Zjky/MjZmZjIxODBmNTY5/YmQxOWY1YzQyN2Vh/ZTc1Y2MzNjUxNjM2/NTM3YTVlMDE5ODY0/NzczYWY4MC9yZXN0/cnVjdHVyaW5nLnJh/Lmtyb2xsLmNvbS8"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "restructuring.ra.kroll.com",
+          "hostname": "restructuring.ra.kroll.com",
+          "favicon": "https://imgs.search.brave.com/1YN6j-rBRoRjyQMI8xPOqFWpBsOLcyaLp_DJKIRZXnE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMGZmNzA3Zjky/MjZmZjIxODBmNTY5/YmQxOWY1YzQyN2Vh/ZTc1Y2MzNjUxNjM2/NTM3YTVlMDE5ODY0/NzczYWY4MC9yZXN0/cnVjdHVyaW5nLnJh/Lmtyb2xsLmNvbS8",
+          "path": "\u203a Terraform"
+        }
+      },
+      {
+        "title": "TERRAFORM LABS PTE. LTD. - Profile, contacts and insights | The Grid",
+        "url": "https://sgpgrid.com/company-details/terraform-labs-pte-ltd",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "This is the legal entity page of TERRAFORM LABS PTE. LTD.. To access company info, company size, news , key makers\u2019 emails, visit the profile pages above.Sign up to view for free \u00b7 The largest company and people database for SEA &amp; ANZ ... Terra is a blockchain platform designed to empower the next generation of Web3 innovations by leveraging a dedicated community and extensive developer resources. This is the legal entity page of TERRAFORM LABS PTE.",
+        "profile": {
+          "name": "The Grid",
+          "url": "https://sgpgrid.com/company-details/terraform-labs-pte-ltd",
+          "long_name": "sgpgrid.com",
+          "img": "https://imgs.search.brave.com/d-dUKzfZmHpZeiqcfJ1EJLDeGMdVRniKNo84Pf3Q0Rs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDBhYzhkZjc0/ZjYwZTQzYjU3ZWNj/YmNjNDQ4MzU4YWFm/MGQ4YmMxYzczMGU4/YmViNDM3NzE4MjEx/ZTkxYWJiMy9zZ3Bn/cmlkLmNvbS8"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "sgpgrid.com",
+          "hostname": "sgpgrid.com",
+          "favicon": "https://imgs.search.brave.com/d-dUKzfZmHpZeiqcfJ1EJLDeGMdVRniKNo84Pf3Q0Rs/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNDBhYzhkZjc0/ZjYwZTQzYjU3ZWNj/YmNjNDQ4MzU4YWFm/MGQ4YmMxYzczMGU4/YmViNDM3NzE4MjEx/ZTkxYWJiMy9zZ3Bn/cmlkLmNvbS8",
+          "path": "\u203a company-details  \u203a terraform-labs-pte-ltd"
+        }
+      },
+      {
+        "title": "Browse Providers | Terraform Registry",
+        "url": "https://registry.terraform.io/browse/providers",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Official providers are owned and maintained by HashiCorp \u00b7 Partner providers are owned and maintained by a technology company that has gone through our partner onboarding process and maintain a direct partnership with HashiCorp. Partner providers are actively supported by the publishing ...",
+        "profile": {
+          "name": "Terraform Registry",
+          "url": "https://registry.terraform.io/browse/providers",
+          "long_name": "registry.terraform.io",
+          "img": "https://imgs.search.brave.com/PfUOJ3JeAFr1uYhgoSF1i3s5uhX42UwHxngSYNFmXmk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjVkMmY5OGJh/MzA5MmE0NTEzODNh/MGY2YWFkYmY0MjAw/NGEzZTE1ZGE3NGE4/ZjE0NmM0ZGNiOTgy/MDkyNGVlMy9yZWdp/c3RyeS50ZXJyYWZv/cm0uaW8v"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "registry.terraform.io",
+          "hostname": "registry.terraform.io",
+          "favicon": "https://imgs.search.brave.com/PfUOJ3JeAFr1uYhgoSF1i3s5uhX42UwHxngSYNFmXmk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjVkMmY5OGJh/MzA5MmE0NTEzODNh/MGY2YWFkYmY0MjAw/NGEzZTE1ZGE3NGE4/ZjE0NmM0ZGNiOTgy/MDkyNGVlMy9yZWdp/c3RyeS50ZXJyYWZv/cm0uaW8v",
+          "path": "\u203a browse  \u203a providers"
+        }
+      },
+      {
+        "title": "Terraform | HashiCorp Developer",
+        "url": "https://developer.hashicorp.com/terraform",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Explore Terraform product documentation, tutorials, and examples.",
+        "profile": {
+          "name": "HashiCorp Developer",
+          "url": "https://developer.hashicorp.com/terraform",
+          "long_name": "developer.hashicorp.com",
+          "img": "https://imgs.search.brave.com/MI5NobwtrczBT4oslJeKsk7HmpFxBVyvJI6c_XA3f-g/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGU4YzYzNGYw/MjI3MGI2MDJkN2Zh/MzE5NTA4MmUxODE1/ZTVmZDkyMjA0Nzc4/MWZjMWYzYjYwNmM1/OTJlNjQ4OC9kZXZl/bG9wZXIuaGFzaGlj/b3JwLmNvbS8"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "developer.hashicorp.com",
+          "hostname": "developer.hashicorp.com",
+          "favicon": "https://imgs.search.brave.com/MI5NobwtrczBT4oslJeKsk7HmpFxBVyvJI6c_XA3f-g/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOGU4YzYzNGYw/MjI3MGI2MDJkN2Zh/MzE5NTA4MmUxODE1/ZTVmZDkyMjA0Nzc4/MWZjMWYzYjYwNmM1/OTJlNjQ4OC9kZXZl/bG9wZXIuaGFzaGlj/b3JwLmNvbS8",
+          "path": "  \u203a terraform"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/HXf55gW6mVIG-xOYSsB-SoJDIKD0Zg3QOHloZ1PDdnI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9kZXZl/bG9wZXIuaGFzaGlj/b3JwLmNvbS9vZy1p/bWFnZS90ZXJyYWZv/cm0uanBn",
+          "original": "https://developer.hashicorp.com/og-image/terraform.jpg",
+          "logo": false
+        }
+      },
+      {
+        "title": "Terraform Labs | Himalayas",
+        "url": "https://himalayas.app/companies/terraform-labs",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Yes, Terraform Labs is a remote-friendly company. ... Terraform Labs provides 1 benefit to their employees. ... No, Terraform Labs does not offer a four-day work week. ... Terraform Labs has 57 technologies in their tech stack. ... Terraform Labs&#x27;s website is www.terra.money.",
+        "profile": {
+          "name": "Himalayas",
+          "url": "https://himalayas.app/companies/terraform-labs",
+          "long_name": "himalayas.app",
+          "img": "https://imgs.search.brave.com/MJkJzH9DfbdpvAuuN-_LMUK6nvu6EkYoHwP_FqjX3Jc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzcwNDBiN2Q5/N2NiMjY4N2IxMGVl/YmYzZjQ4ZTQyMmUz/OGEyOGNjMDAxMTky/YTI4ZDdiOGQ4MWRh/ODg0M2ZjMC9oaW1h/bGF5YXMuYXBwLw"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "himalayas.app",
+          "hostname": "himalayas.app",
+          "favicon": "https://imgs.search.brave.com/MJkJzH9DfbdpvAuuN-_LMUK6nvu6EkYoHwP_FqjX3Jc/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNzcwNDBiN2Q5/N2NiMjY4N2IxMGVl/YmYzZjQ4ZTQyMmUz/OGEyOGNjMDAxMTky/YTI4ZDdiOGQ4MWRh/ODg0M2ZjMC9oaW1h/bGF5YXMuYXBwLw",
+          "path": "  \u203a remote companies  \u203a terraform labs"
+        }
+      },
+      {
+        "title": "TFL Shutdown",
+        "url": "https://www.terra.money/",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Follow us for the latest updates https://x.com/terra_money \u00b7 For more details, please refer to the Medium article published here or the claims information page here",
+        "profile": {
+          "name": "Terra",
+          "url": "https://www.terra.money/",
+          "long_name": "terra.money",
+          "img": "https://imgs.search.brave.com/NZgaCKgUFyFwzxmB-G38FRZI6A9KsqHWeMlh4IMiZCE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VmMDQyYWFh/NzcyMGZmNWRmZWEx/YTY3OGZhZmQ4ZDFh/YmNjNTg2MDMzODgw/YmU4NGFhNDhmNmI4/NDkyMGM4Mi93d3cu/dGVycmEubW9uZXkv"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "terra.money",
+          "hostname": "www.terra.money",
+          "favicon": "https://imgs.search.brave.com/NZgaCKgUFyFwzxmB-G38FRZI6A9KsqHWeMlh4IMiZCE/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvY2VmMDQyYWFh/NzcyMGZmNWRmZWEx/YTY3OGZhZmQ4ZDFh/YmNjNTg2MDMzODgw/YmU4NGFhNDhmNmI4/NDkyMGM4Mi93d3cu/dGVycmEubW9uZXkv",
+          "path": ""
+        }
+      },
+      {
+        "title": "Latest Terraform Labs News | crypto.news",
+        "url": "https://crypto.news/tag/terraform-labs/",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Terraform labs, the Singapore-based company behind the Terra blockchain and its associated cryptocurrencies TerraUSD and Luna, is launching a crypto asset loss claim portal on March 31\u2014claims to be submitted by April 30.",
+        "profile": {
+          "name": "Crypto News",
+          "url": "https://crypto.news/tag/terraform-labs/",
+          "long_name": "crypto.news",
+          "img": "https://imgs.search.brave.com/zUhlzl-ourTmtdkgror85eRj0MztnHeVyJoQz01fxhY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTIzMDg0ZWJk/YzM1MTgwYjFhMmQ4/YWRiOWIzNzFhODVl/M2ViYjZjOTg0YzEx/OGYwZjVhMzgyZGFi/YWY3MTUzNi9jcnlw/dG8ubmV3cy8"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "crypto.news",
+          "hostname": "crypto.news",
+          "favicon": "https://imgs.search.brave.com/zUhlzl-ourTmtdkgror85eRj0MztnHeVyJoQz01fxhY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZTIzMDg0ZWJk/YzM1MTgwYjFhMmQ4/YWRiOWIzNzFhODVl/M2ViYjZjOTg0YzEx/OGYwZjVhMzgyZGFi/YWY3MTUzNi9jcnlw/dG8ubmV3cy8",
+          "path": "  \u203a home  \u203a terraform labs latest news"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/R7vPS3qCQhceHaW7qq2ycPBi4MwHTH1hcN6YvbTXWuQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jcnlw/dG8ubmV3cy9hcHAv/dXBsb2Fkcy8yMDIz/LzA0L29nLWltYWdl/LWRlZmF1bHQucG5n",
+          "original": "https://crypto.news/app/uploads/2023/04/og-image-default.png",
+          "logo": false
+        }
+      },
+      {
+        "title": "Terra \ud83c\udf0d Powered by LUNA \ud83c\udf15 (@terra_money) / X",
+        "url": "https://x.com/terra_money",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Post-Chapter 11, Terraform Labs began winding down and is no longer active. All official Delaware U.S.",
+        "page_age": "2018-07-25T08:01:15",
+        "profile": {
+          "name": "X",
+          "url": "https://x.com/terra_money",
+          "long_name": "x.com",
+          "img": "https://imgs.search.brave.com/VpOsyUaQQGp5MT_drqEzgpxdO8o12jax0jeq0Vojuto/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmQzM2JiZDhi/OWVhNGYxZmRkNDli/NzAxODUzMzFhYTNm/ODcxNmE4ZGQ5OTE3/MWU4OGZjNDQyZDdh/NzQ4MWE4YS94LmNv/bS8"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "x.com",
+          "hostname": "x.com",
+          "favicon": "https://imgs.search.brave.com/VpOsyUaQQGp5MT_drqEzgpxdO8o12jax0jeq0Vojuto/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMmQzM2JiZDhi/OWVhNGYxZmRkNDli/NzAxODUzMzFhYTNm/ODcxNmE4ZGQ5OTE3/MWU4OGZjNDQyZDdh/NzQ4MWE4YS94LmNv/bS8",
+          "path": "\u203a terra_money"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/xOnWqBhFASAjsy3rMfhCM2GaEnZ2jv14aOzOc498bo8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hYnMu/dHdpbWcuY29tL3J3/ZWIvc3NyL2RlZmF1/bHQvdjIvb2cvaW1h/Z2UucG5n",
+          "original": "https://abs.twimg.com/rweb/ssr/default/v2/og/image.png",
+          "logo": false
+        },
+        "age": "July 25, 2018"
+      },
+      {
+        "title": "r/CryptoCurrency on Reddit: Terraform Labs Opens Crypto Claims Portal: What You Need To Know",
+        "url": "https://www.reddit.com/r/CryptoCurrency/comments/1jlrexo/terraform_labs_opens_crypto_claims_portal_what/",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "tldr; Terraform Labs announced the launch of its Crypto Loss Claims Portal, opening March 31, 2025, for creditors to submit claims related to the Terra USD collapse. Creditors must register and provide proof of ownership, with a submission deadline of April 30, 2025. Claims based on manual evidence may face delays or disqualification. Late submissions will forfeit recovery. The portal follows Terraform Labs&#x27; legal and financial challenges, including a $4.47 billion SEC settlement and bankruptcy proceedings aimed at compensating affected investors.",
+        "page_age": "2025-03-28T09:50:29",
+        "profile": {
+          "name": "Reddit",
+          "url": "https://www.reddit.com/r/CryptoCurrency/comments/1jlrexo/terraform_labs_opens_crypto_claims_portal_what/",
+          "long_name": "reddit.com",
+          "img": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "article",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "reddit.com",
+          "hostname": "www.reddit.com",
+          "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+          "path": "  \u203a r/cryptocurrency  \u203a terraform labs opens crypto claims portal: what you need to know"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/E9yohlPoJO2jHL6AovBg-2Iess1N3E7ySo555SuY2Ao/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9leHRl/cm5hbC1wcmV2aWV3/LnJlZGQuaXQvdGVy/cmFmb3JtLWxhYnMt/b3BlbnMtY3J5cHRv/LWNsYWltcy1wb3J0/YWwtd2hhdC15b3Ut/bmVlZC10by12MC1t/cmIxU0tUWS1FNkdC/QTVHdG5BTzZFUVhO/aGZDeEJGXzYzaU1f/MFpEWk1vLmpwZz9h/dXRvPXdlYnAmcz00/MTUwMGQzMWFjYTA4/ZTYyNDZkZTQ5Zjc5/OWQyNWYxYjZiODQ1/MDAx",
+          "original": "https://external-preview.redd.it/terraform-labs-opens-crypto-claims-portal-what-you-need-to-v0-mrb1SKTY-E6GBA5GtnAO6EQXNhfCxBF_63iM_0ZDZMo.jpg?auto=webp&s=41500d31aca08e6246de49f799d25f1b6b845001",
+          "logo": false
+        },
+        "age": "March 28, 2025"
+      },
+      {
+        "title": "r/Nexo on Reddit: Terraform Labs Crypto Loss Claims",
+        "url": "https://www.reddit.com/r/Nexo/comments/1jrgru1/terraform_labs_crypto_loss_claims/",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "A few days ago, Terraform Labs opened the Terraform Labs Crypto Loss Claims Portal for users affected by the collapse of Terra USD. This is a part of\u2026",
+        "page_age": "2025-04-04T16:56:04",
+        "profile": {
+          "name": "Reddit",
+          "url": "https://www.reddit.com/r/Nexo/comments/1jrgru1/terraform_labs_crypto_loss_claims/",
+          "long_name": "reddit.com",
+          "img": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "qa",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "reddit.com",
+          "hostname": "www.reddit.com",
+          "favicon": "https://imgs.search.brave.com/U-eHNCapRHVNWWCVPPMTIvOofZULh0_A_FQKe8xTE4I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2ZiNTU0M2Nj/MTFhZjRiYWViZDlk/MjJiMjBjMzFjMDRk/Y2IzYWI0MGI0MjVk/OGY5NzQzOGQ5NzQ5/NWJhMWI0NC93d3cu/cmVkZGl0LmNvbS8",
+          "path": "  \u203a r/nexo  \u203a terraform labs crypto loss claims"
+        },
+        "thumbnail": {
+          "src": "https://imgs.search.brave.com/A5H_aQiEBuUODR0lNeU8iDfhrWUvO8oEmRGE_mcS_gM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/cmVkZGl0c3RhdGlj/LmNvbS9pY29uLnBu/Zw",
+          "original": "https://www.redditstatic.com/icon.png",
+          "logo": true
+        },
+        "age": "April 4, 2025"
+      },
+      {
+        "title": "Terraform Labs Pte. Ltd. Overview Case: 24-10070 - Epiq 11",
+        "url": "https://dm.epiq11.com/case/terraform/info",
+        "is_source_local": false,
+        "is_source_both": false,
+        "description": "Epiq11.com builds on a library of cases spanning two decades - the largest repository of such data in the industry outside of the federal court system.",
+        "profile": {
+          "name": "Epiq 11",
+          "url": "https://dm.epiq11.com/case/terraform/info",
+          "long_name": "dm.epiq11.com",
+          "img": "https://imgs.search.brave.com/mjWkaIej7VHqsKu_m3aqZc4LddAi-VpUdfIxRDqynpM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjI1MWQ2MDQx/ZWNhZDM0MDZiMTY5/ZTIyNmUwYmRhNzJi/MGNhMGIzOWNlZWMx/NGI2MmNhYmExYzFk/MGFkZjlkOC9kbS5l/cGlxMTEuY29tLw"
+        },
+        "language": "en",
+        "family_friendly": true,
+        "type": "search_result",
+        "subtype": "generic",
+        "is_live": false,
+        "meta_url": {
+          "scheme": "https",
+          "netloc": "dm.epiq11.com",
+          "hostname": "dm.epiq11.com",
+          "favicon": "https://imgs.search.brave.com/mjWkaIej7VHqsKu_m3aqZc4LddAi-VpUdfIxRDqynpM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjI1MWQ2MDQx/ZWNhZDM0MDZiMTY5/ZTIyNmUwYmRhNzJi/MGNhMGIzOWNlZWMx/NGI2MmNhYmExYzFk/MGFkZjlkOC9kbS5l/cGlxMTEuY29tLw",
+          "path": "\u203a case  \u203a terraform  \u203a info"
+        }
+      }
+    ],
+    "family_friendly": true
+  }
+}

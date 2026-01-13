@@ -1,0 +1,515 @@
+{
+  "metadata": {
+    "title": "Crypto Fraud Network Investigation Demo",
+    "description": "Sample network dataset showing interconnected crypto fraud cases for demonstration purposes",
+    "created_at": "2026-01-13",
+    "version": "1.0"
+  },
+  "nodes": [
+    {
+      "id": "ftx_trading",
+      "label": "FTX Trading Ltd",
+      "type": "company",
+      "jurisdiction": "BS",
+      "fraud_type": "Securities Fraud",
+      "risk_score": 0.5,
+      "status": "Bankrupt",
+      "description": "Major crypto exchange fraud, misappropriation of customer funds"
+    },
+    {
+      "id": "alameda_research",
+      "label": "Alameda Research LLC",
+      "type": "company",
+      "jurisdiction": "US-DE",
+      "fraud_type": "Securities Fraud",
+      "risk_score": 0.3,
+      "status": "Bankrupt",
+      "description": "Trading firm secretly using FTX customer funds"
+    },
+    {
+      "id": "ftx_digital",
+      "label": "FTX Digital Markets",
+      "type": "company",
+      "jurisdiction": "BS",
+      "fraud_type": "Securities Fraud",
+      "risk_score": 0.6,
+      "status": "Bankrupt",
+      "description": "Bahamas subsidiary of FTX"
+    },
+    {
+      "id": "terraform_labs",
+      "label": "Terraform Labs Pte Ltd",
+      "type": "company",
+      "jurisdiction": "SG",
+      "fraud_type": "Securities Fraud",
+      "risk_score": 0.4,
+      "status": "Bankrupt",
+      "description": "$4.5B SEC settlement, crypto asset securities fraud"
+    },
+    {
+      "id": "luna_foundation",
+      "label": "Luna Foundation Guard",
+      "type": "company",
+      "jurisdiction": "SG",
+      "fraud_type": "Securities Fraud",
+      "risk_score": 0.5,
+      "status": "Inactive",
+      "description": "Non-profit linked to Terra/Luna collapse"
+    },
+    {
+      "id": "bitconnect",
+      "label": "BitConnect International",
+      "type": "company",
+      "jurisdiction": "GB",
+      "fraud_type": "Ponzi Scheme",
+      "risk_score": 0.2,
+      "status": "Defunct",
+      "description": "$2.4B crypto Ponzi scheme"
+    },
+    {
+      "id": "bitconnect_trading",
+      "label": "BitConnect Trading Ltd",
+      "type": "company",
+      "jurisdiction": "VG",
+      "fraud_type": "Ponzi Scheme",
+      "risk_score": 0.3,
+      "status": "Defunct",
+      "description": "BVI subsidiary for offshore operations"
+    },
+    {
+      "id": "three_arrows",
+      "label": "Three Arrows Capital",
+      "type": "company",
+      "jurisdiction": "SG",
+      "fraud_type": "Securities Fraud",
+      "risk_score": 0.4,
+      "status": "Liquidated",
+      "description": "Crypto hedge fund, misrepresented assets"
+    },
+    {
+      "id": "celsius_network",
+      "label": "Celsius Network LLC",
+      "type": "company",
+      "jurisdiction": "US-DE",
+      "fraud_type": "Securities Fraud",
+      "risk_score": 0.5,
+      "status": "Bankrupt",
+      "description": "Crypto lending platform fraud"
+    },
+    {
+      "id": "voyager_digital",
+      "label": "Voyager Digital LLC",
+      "type": "company",
+      "jurisdiction": "US-DE",
+      "fraud_type": "Securities Fraud",
+      "risk_score": 0.6,
+      "status": "Bankrupt",
+      "description": "Crypto brokerage, exposed to 3AC collapse"
+    },
+    {
+      "id": "genesis_trading",
+      "label": "Genesis Global Trading",
+      "type": "company",
+      "jurisdiction": "US-NY",
+      "fraud_type": "Securities Fraud",
+      "risk_score": 0.5,
+      "status": "Bankrupt",
+      "description": "Crypto lending, affected by FTX/3AC failures"
+    },
+    {
+      "id": "sbf",
+      "label": "Sam Bankman-Fried",
+      "type": "person",
+      "role": "CEO/Founder",
+      "risk_score": 0.1,
+      "status": "Convicted",
+      "description": "FTX founder, convicted of fraud"
+    },
+    {
+      "id": "caroline_ellison",
+      "label": "Caroline Ellison",
+      "type": "person",
+      "role": "CEO",
+      "risk_score": 0.3,
+      "status": "Cooperating",
+      "description": "Alameda Research CEO, cooperating witness"
+    },
+    {
+      "id": "gary_wang",
+      "label": "Gary Wang",
+      "type": "person",
+      "role": "CTO",
+      "risk_score": 0.4,
+      "status": "Cooperating",
+      "description": "FTX co-founder and CTO"
+    },
+    {
+      "id": "do_kwon",
+      "label": "Do Kwon",
+      "type": "person",
+      "role": "CEO/Founder",
+      "risk_score": 0.2,
+      "status": "Arrested",
+      "description": "Terraform Labs founder"
+    },
+    {
+      "id": "alex_mashinsky",
+      "label": "Alex Mashinsky",
+      "type": "person",
+      "role": "CEO",
+      "risk_score": 0.3,
+      "status": "Charged",
+      "description": "Celsius Network founder"
+    },
+    {
+      "id": "su_zhu",
+      "label": "Su Zhu",
+      "type": "person",
+      "role": "Co-Founder",
+      "risk_score": 0.2,
+      "status": "Arrested",
+      "description": "Three Arrows Capital co-founder"
+    },
+    {
+      "id": "kyle_davies",
+      "label": "Kyle Davies",
+      "type": "person",
+      "role": "Co-Founder",
+      "risk_score": 0.3,
+      "status": "Fugitive",
+      "description": "Three Arrows Capital co-founder"
+    },
+    {
+      "id": "satish_kumbhani",
+      "label": "Satish Kumbhani",
+      "type": "person",
+      "role": "Founder",
+      "risk_score": 0.1,
+      "status": "Fugitive",
+      "description": "BitConnect founder"
+    },
+    {
+      "id": "addr_nassau",
+      "label": "One Bay Street, Nassau",
+      "type": "address",
+      "jurisdiction": "BS",
+      "risk_score": 0.6,
+      "description": "FTX headquarters in Bahamas"
+    },
+    {
+      "id": "addr_singapore_1",
+      "label": "One Raffles Place, Singapore",
+      "type": "address",
+      "jurisdiction": "SG",
+      "risk_score": 0.7,
+      "description": "Registered office for multiple crypto entities"
+    },
+    {
+      "id": "addr_bvi",
+      "label": "Road Town, Tortola BVI",
+      "type": "address",
+      "jurisdiction": "VG",
+      "risk_score": 0.4,
+      "description": "Offshore registration address"
+    },
+    {
+      "id": "addr_delaware",
+      "label": "1209 Orange St, Wilmington DE",
+      "type": "address",
+      "jurisdiction": "US-DE",
+      "risk_score": 0.8,
+      "description": "Common Delaware registered agent address"
+    },
+    {
+      "id": "case_sec_ftx",
+      "label": "SEC v. FTX (2022)",
+      "type": "case",
+      "case_type": "SEC Enforcement",
+      "penalty": null,
+      "description": "Securities fraud charges against FTX entities"
+    },
+    {
+      "id": "case_sec_terraform",
+      "label": "SEC v. Terraform Labs (2023)",
+      "type": "case",
+      "case_type": "SEC Enforcement",
+      "penalty": 4500000000,
+      "description": "$4.5B settlement for crypto securities fraud"
+    },
+    {
+      "id": "case_sec_bitconnect",
+      "label": "SEC v. BitConnect (2021)",
+      "type": "case",
+      "case_type": "SEC Enforcement",
+      "penalty": 2400000000,
+      "description": "$2.4B Ponzi scheme enforcement"
+    },
+    {
+      "id": "case_sec_celsius",
+      "label": "SEC v. Celsius (2023)",
+      "type": "case",
+      "case_type": "SEC Enforcement",
+      "penalty": null,
+      "description": "Fraud charges against Celsius Network"
+    }
+  ],
+  "edges": [
+    {
+      "source": "sbf",
+      "target": "ftx_trading",
+      "relationship": "founded",
+      "label": "Founder/CEO"
+    },
+    {
+      "source": "sbf",
+      "target": "alameda_research",
+      "relationship": "founded",
+      "label": "Founder"
+    },
+    {
+      "source": "caroline_ellison",
+      "target": "alameda_research",
+      "relationship": "executive",
+      "label": "CEO"
+    },
+    {
+      "source": "gary_wang",
+      "target": "ftx_trading",
+      "relationship": "executive",
+      "label": "CTO"
+    },
+    {
+      "source": "ftx_trading",
+      "target": "alameda_research",
+      "relationship": "financial_link",
+      "label": "Secret credit facility"
+    },
+    {
+      "source": "ftx_trading",
+      "target": "ftx_digital",
+      "relationship": "subsidiary",
+      "label": "Parent company"
+    },
+    {
+      "source": "do_kwon",
+      "target": "terraform_labs",
+      "relationship": "founded",
+      "label": "Founder/CEO"
+    },
+    {
+      "source": "do_kwon",
+      "target": "luna_foundation",
+      "relationship": "control",
+      "label": "Controls"
+    },
+    {
+      "source": "terraform_labs",
+      "target": "luna_foundation",
+      "relationship": "affiliate",
+      "label": "Affiliated"
+    },
+    {
+      "source": "satish_kumbhani",
+      "target": "bitconnect",
+      "relationship": "founded",
+      "label": "Founder"
+    },
+    {
+      "source": "bitconnect",
+      "target": "bitconnect_trading",
+      "relationship": "subsidiary",
+      "label": "BVI subsidiary"
+    },
+    {
+      "source": "alex_mashinsky",
+      "target": "celsius_network",
+      "relationship": "founded",
+      "label": "Founder/CEO"
+    },
+    {
+      "source": "su_zhu",
+      "target": "three_arrows",
+      "relationship": "founded",
+      "label": "Co-Founder"
+    },
+    {
+      "source": "kyle_davies",
+      "target": "three_arrows",
+      "relationship": "founded",
+      "label": "Co-Founder"
+    },
+    {
+      "source": "three_arrows",
+      "target": "voyager_digital",
+      "relationship": "financial_link",
+      "label": "$650M loan default"
+    },
+    {
+      "source": "three_arrows",
+      "target": "genesis_trading",
+      "relationship": "financial_link",
+      "label": "$2.3B exposure"
+    },
+    {
+      "source": "three_arrows",
+      "target": "celsius_network",
+      "relationship": "financial_link",
+      "label": "Investment exposure"
+    },
+    {
+      "source": "alameda_research",
+      "target": "genesis_trading",
+      "relationship": "financial_link",
+      "label": "Trading relationship"
+    },
+    {
+      "source": "alameda_research",
+      "target": "voyager_digital",
+      "relationship": "financial_link",
+      "label": "Credit line"
+    },
+    {
+      "source": "ftx_trading",
+      "target": "addr_nassau",
+      "relationship": "registered_at",
+      "label": "HQ"
+    },
+    {
+      "source": "ftx_digital",
+      "target": "addr_nassau",
+      "relationship": "registered_at",
+      "label": "Office"
+    },
+    {
+      "source": "terraform_labs",
+      "target": "addr_singapore_1",
+      "relationship": "registered_at",
+      "label": "Office"
+    },
+    {
+      "source": "luna_foundation",
+      "target": "addr_singapore_1",
+      "relationship": "registered_at",
+      "label": "Office"
+    },
+    {
+      "source": "three_arrows",
+      "target": "addr_singapore_1",
+      "relationship": "registered_at",
+      "label": "Office"
+    },
+    {
+      "source": "bitconnect_trading",
+      "target": "addr_bvi",
+      "relationship": "registered_at",
+      "label": "Registered"
+    },
+    {
+      "source": "alameda_research",
+      "target": "addr_delaware",
+      "relationship": "registered_at",
+      "label": "Registered"
+    },
+    {
+      "source": "celsius_network",
+      "target": "addr_delaware",
+      "relationship": "registered_at",
+      "label": "Registered"
+    },
+    {
+      "source": "voyager_digital",
+      "target": "addr_delaware",
+      "relationship": "registered_at",
+      "label": "Registered"
+    },
+    {
+      "source": "ftx_trading",
+      "target": "case_sec_ftx",
+      "relationship": "defendant_in",
+      "label": "Defendant"
+    },
+    {
+      "source": "alameda_research",
+      "target": "case_sec_ftx",
+      "relationship": "defendant_in",
+      "label": "Defendant"
+    },
+    {
+      "source": "sbf",
+      "target": "case_sec_ftx",
+      "relationship": "defendant_in",
+      "label": "Defendant"
+    },
+    {
+      "source": "terraform_labs",
+      "target": "case_sec_terraform",
+      "relationship": "defendant_in",
+      "label": "Defendant"
+    },
+    {
+      "source": "do_kwon",
+      "target": "case_sec_terraform",
+      "relationship": "defendant_in",
+      "label": "Defendant"
+    },
+    {
+      "source": "bitconnect",
+      "target": "case_sec_bitconnect",
+      "relationship": "defendant_in",
+      "label": "Defendant"
+    },
+    {
+      "source": "satish_kumbhani",
+      "target": "case_sec_bitconnect",
+      "relationship": "defendant_in",
+      "label": "Defendant"
+    },
+    {
+      "source": "celsius_network",
+      "target": "case_sec_celsius",
+      "relationship": "defendant_in",
+      "label": "Defendant"
+    },
+    {
+      "source": "alex_mashinsky",
+      "target": "case_sec_celsius",
+      "relationship": "defendant_in",
+      "label": "Defendant"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "ftx_cluster",
+      "label": "FTX/Alameda Network",
+      "entities": ["ftx_trading", "alameda_research", "ftx_digital", "sbf", "caroline_ellison", "gary_wang"],
+      "color": "#e74c3c"
+    },
+    {
+      "id": "terra_cluster",
+      "label": "Terra/Luna Network",
+      "entities": ["terraform_labs", "luna_foundation", "do_kwon"],
+      "color": "#3498db"
+    },
+    {
+      "id": "contagion_cluster",
+      "label": "Crypto Contagion",
+      "entities": ["three_arrows", "celsius_network", "voyager_digital", "genesis_trading"],
+      "color": "#9b59b6"
+    },
+    {
+      "id": "ponzi_cluster",
+      "label": "BitConnect Ponzi",
+      "entities": ["bitconnect", "bitconnect_trading", "satish_kumbhani"],
+      "color": "#e67e22"
+    }
+  ],
+  "statistics": {
+    "total_nodes": 27,
+    "companies": 11,
+    "persons": 8,
+    "addresses": 4,
+    "cases": 4,
+    "total_edges": 38,
+    "total_penalty_amount": 6900000000
+  }
+}
