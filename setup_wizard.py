@@ -79,17 +79,42 @@ def check_python_version():
     return True
 
 
-def check_dependencies():
-    """Check and install dependencies."""
-    print_step(1, "Checking dependencies...")
-
-    requirements_file = Path(__file__).parent / 'requirements.txt'
-
-    if not requirements_file.exists():
-        print_error("requirements.txt not found!")
+def check_uv_available():
+    """Check if uv is installed."""
+    try:
+        result = subprocess.run(
+            ['uv', '--version'],
+            capture_output=True,
+            text=True
+        )
+        return result.returncode == 0
+    except FileNotFoundError:
         return False
 
-    # Try importing key packages
+
+def check_dependencies():
+    """Check and install dependencies using uv."""
+    print_step(1, "Checking dependencies...")
+
+    pyproject_file = Path(__file__).parent / 'pyproject.toml'
+
+    if not pyproject_file.exists():
+        print_error("pyproject.toml not found!")
+        return False
+
+    # Check if uv is available
+    if not check_uv_available():
+        print_error("uv is not installed!")
+        print_info("Install uv: curl -LsSf https://astral.sh/uv/install.sh | sh")
+        print_info("Or visit: https://docs.astral.sh/uv/getting-started/installation/")
+        return False
+
+    print_success("uv is available")
+
+    # Check if .venv exists and has packages
+    venv_dir = Path(__file__).parent / '.venv'
+
+    # Try importing key packages to see if we need to sync
     missing = []
     packages = ['streamlit', 'pandas', 'requests', 'plotly', 'fitz']
 
@@ -99,15 +124,15 @@ def check_dependencies():
         except ImportError:
             missing.append(pkg)
 
-    if missing:
-        print_warning(f"Missing packages: {', '.join(missing)}")
+    if missing or not venv_dir.exists():
+        if missing:
+            print_warning(f"Missing packages: {', '.join(missing)}")
+        else:
+            print_info("Virtual environment not found")
 
-        if ask_yes_no("Install missing dependencies?"):
+        if ask_yes_no("Run 'uv sync' to install dependencies?"):
             try:
-                subprocess.check_call([
-                    sys.executable, '-m', 'pip', 'install', '-r',
-                    str(requirements_file), '-q'
-                ])
+                subprocess.check_call(['uv', 'sync'], cwd=Path(__file__).parent)
                 print_success("Dependencies installed successfully!")
             except subprocess.CalledProcessError:
                 print_error("Failed to install dependencies")
@@ -353,12 +378,12 @@ def build_fraud_database():
 
     if ask_yes_no("Build combined fraud database from all sources?"):
         try:
-            import subprocess
             result = subprocess.run(
-                [sys.executable, 'combine_all_sources.py'],
+                ['uv', 'run', 'python', 'combine_all_sources.py'],
                 capture_output=True,
                 text=True,
-                timeout=300
+                timeout=300,
+                cwd=Path(__file__).parent
             )
 
             if result.returncode == 0:
@@ -374,7 +399,7 @@ def build_fraud_database():
         except Exception as e:
             print_error(f"Failed to build database: {e}")
     else:
-        print_info("Skipped database build. Run manually: python combine_all_sources.py")
+        print_info("Skipped database build. Run manually: uv run python combine_all_sources.py")
 
     return True
 
@@ -438,7 +463,7 @@ def print_next_steps():
 {Colors.GREEN}Your Company Research Tool is ready to use!{Colors.END}
 
 {Colors.BOLD}To start the application:{Colors.END}
-    streamlit run app.py
+    uv run streamlit run app.py
 
 {Colors.BOLD}The app will open in your browser at:{Colors.END}
     http://localhost:8501
