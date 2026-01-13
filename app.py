@@ -61,6 +61,14 @@ def home_page():
     st.title("Company Research Tool")
     st.markdown("### Automated Legitimacy Assessment & KYC Compliance")
 
+    # Highlight the demo-ready network visualization
+    st.success(
+        """
+        🎯 **NEW: Live Network Demo!** Try the [Network Investigation](#network-investigation) page—works immediately with zero setup.
+        Explore $6.9B+ in interconnected crypto fraud cases with an interactive graph.
+        """
+    )
+
     st.markdown(
         """
     This tool helps investigators quickly assess companies for potential
@@ -68,13 +76,13 @@ def home_page():
     data from multiple sources to provide comprehensive risk assessments.
 
     **Features:**
-    - Upload Excel/CSV files with company lists
-    - Enrich data via Brave Search & OpenCorporates APIs
-    - Calculate risk scores using weighted framework
-    - Browse known fraud cases database
-    - Screen against OFAC sanctions lists
-    - **NEW:** Interactive network visualization for fraud investigation
-    - Export results to Excel/CSV
+    - 🕸️ **Interactive Network Visualization** - Pre-loaded fraud network demo (no setup!)
+    - 📤 Upload Excel/CSV files with company lists
+    - 🔍 Enrich data via Brave Search & OpenCorporates APIs
+    - 📊 Calculate risk scores using weighted framework
+    - 🗂️ Browse known fraud cases database (7,000+ cases)
+    - 🚫 Screen against OFAC sanctions lists
+    - 💾 Export results to Excel/CSV
 
     **Data Sources:**
     - **SEC Enforcement Actions** - Fraud cases and litigation
@@ -857,14 +865,14 @@ def data_management_page():
 
 def network_viz_page():
     """Render the network visualization demo page."""
-    st.title("Network Investigation Demo")
-    st.markdown("### Interactive Fraud Network Visualization")
+    st.title("🕸️ Network Investigation Demo")
 
-    st.markdown(
+    # Prominent demo banner
+    st.info(
         """
-    This demo shows interconnected relationships in major crypto fraud cases.
-    The network reveals how entities, people, addresses, and legal cases are linked.
-    """
+        **🎯 Live Demo Ready!** This interactive fraud network visualization works immediately—no setup required.
+        Explore $6.9B+ in crypto fraud cases: FTX, Terra/Luna, BitConnect, and more. Drag nodes, zoom, click for details.
+        """
     )
 
     # Load demo data
@@ -874,129 +882,42 @@ def network_viz_page():
         st.error("Demo network data not found. Check data/examples/fraud_network_demo.json")
         return
 
-    # Sidebar controls
-    st.sidebar.markdown("### Network Controls")
-
-    # Cluster selection
-    clusters = network_data.get("clusters", [])
-    cluster_options = ["Full Network"] + [c["label"] for c in clusters]
-    selected_cluster = st.sidebar.selectbox("Focus Cluster", cluster_options)
-
-    # Node type filter
-    all_types = list(set(n["type"] for n in network_data["nodes"]))
-    selected_types = st.sidebar.multiselect(
-        "Node Types",
-        options=all_types,
-        default=all_types,
-        help="Filter by entity type"
-    )
-
-    # Entity focus
-    all_entities = [n["label"] for n in network_data["nodes"]]
-    focus_entity = st.sidebar.selectbox(
-        "Focus Entity (optional)",
-        options=["None"] + all_entities,
-        help="Show only entities connected to this one"
-    )
-
-    depth = st.sidebar.slider("Connection Depth", 1, 3, 2)
-
-    # Apply filters
-    filtered_data = network_data
-
-    if selected_cluster != "Full Network":
-        cluster_id = next(
-            (c["id"] for c in clusters if c["label"] == selected_cluster),
-            None
-        )
-        if cluster_id:
-            filtered_data = create_cluster_subgraph(network_data, cluster_id)
-
-    if selected_types and set(selected_types) != set(all_types):
-        filtered_data = filter_by_node_type(filtered_data, selected_types)
-
-    if focus_entity != "None":
-        entity_id = next(
-            (n["id"] for n in network_data["nodes"] if n["label"] == focus_entity),
-            None
-        )
-        if entity_id:
-            filtered_data = get_connected_entities(network_data, entity_id, depth)
-
-    # Display stats
-    st.markdown("### Network Statistics")
-    col1, col2, col3, col4 = st.columns(4)
+    # Display impressive stats upfront
+    st.markdown("### 💰 Network Overview")
+    col1, col2, col3, col4, col5 = st.columns(5)
 
     stats = network_data.get("statistics", {})
     with col1:
-        st.metric("Companies", stats.get("companies", 0))
+        st.metric("Total Entities", stats.get("total_nodes", 0))
     with col2:
-        st.metric("Persons", stats.get("persons", 0))
+        st.metric("Companies", stats.get("companies", 0))
     with col3:
-        st.metric("Addresses", stats.get("addresses", 0))
+        st.metric("Executives", stats.get("persons", 0))
     with col4:
         st.metric("Legal Cases", stats.get("cases", 0))
+    with col5:
+        total_penalty = stats.get("total_penalty_amount", 0)
+        st.metric("Total Penalties", f"${total_penalty/1e9:.1f}B" if total_penalty else "N/A")
 
-    # Compute metrics
-    metrics = compute_network_metrics(filtered_data)
-
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Visible Nodes", metrics["node_count"])
-    with col2:
-        st.metric("Connections", metrics["edge_count"])
-    with col3:
-        density = metrics.get("density", 0) * 100
-        st.metric("Network Density", f"{density:.1f}%")
-
-    # Key findings
-    if "top_connected" in metrics and metrics["top_connected"]:
-        st.markdown("### Key Findings")
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.markdown("**Most Connected Entities:**")
-            for entity_id, centrality in metrics["top_connected"][:5]:
-                node = next(
-                    (n for n in network_data["nodes"] if n["id"] == entity_id),
-                    None
-                )
-                if node:
-                    st.markdown(f"- {node['label']} ({centrality:.2%})")
-
-        with col2:
-            if "key_bridges" in metrics and metrics["key_bridges"]:
-                st.markdown("**Key Bridge Entities:**")
-                for entity_id, centrality in metrics["key_bridges"][:5]:
-                    node = next(
-                        (n for n in network_data["nodes"] if n["id"] == entity_id),
-                        None
-                    )
-                    if node:
-                        st.markdown(f"- {node['label']} ({centrality:.2%})")
-
-    # Generate network visualization
-    st.markdown("### Interactive Network Graph")
+    # Generate network visualization FIRST - make it the star of the show
+    st.markdown("---")
+    st.markdown("### 🎨 Interactive Network Graph")
     st.markdown(
         """
-    **Legend:**
-    - Red boxes = Companies (colored by risk)
-    - Blue circles = People
-    - Green triangles = Addresses
-    - Purple diamonds = Legal Cases
+    **Legend:** 🔴 Companies (risk-colored) • 🔵 People • 🟢 Addresses • 🟣 Legal Cases
 
-    **Interactions:** Drag nodes, zoom with scroll, click for details
+    **Interactions:** Drag nodes to rearrange • Scroll to zoom • Click for details • Use controls below to filter
     """
     )
 
-    # Create pyvis network
+    # Create pyvis network with FULL network by default
     try:
         import tempfile
         import streamlit.components.v1 as components
 
         net = create_pyvis_network(
-            filtered_data,
-            height="600px",
+            network_data,  # Show full network by default for maximum impact
+            height="700px",
             width="100%",
             bgcolor="#0e1117",
             font_color="#fafafa",
@@ -1007,12 +928,131 @@ def network_viz_page():
             net.save_graph(f.name)
             with open(f.name, "r", encoding='utf-8') as html_file:
                 html_content = html_file.read()
-            components.html(html_content, height=620, scrolling=True)
+            components.html(html_content, height=720, scrolling=True)
 
     except ImportError as e:
         st.error(f"Missing dependency: {e}. Run: pip install pyvis networkx")
     except Exception as e:
         st.error(f"Error rendering network: {e}")
+
+    # Network analysis and controls come AFTER the visualization
+    st.markdown("---")
+
+    # Sidebar controls for filtering
+    with st.sidebar:
+        st.markdown("### 🎛️ Network Filters")
+        st.markdown("*Refine the visualization above*")
+
+        # Cluster selection
+        clusters = network_data.get("clusters", [])
+        cluster_options = ["Full Network (default)"] + [c["label"] for c in clusters]
+        selected_cluster = st.selectbox("Focus on Cluster", cluster_options, key="cluster_select")
+
+        # Node type filter
+        all_types = list(set(n["type"] for n in network_data["nodes"]))
+        selected_types = st.multiselect(
+            "Show Entity Types",
+            options=all_types,
+            default=all_types,
+            help="Filter by entity type",
+            key="type_filter"
+        )
+
+        # Entity focus
+        all_entities = [n["label"] for n in network_data["nodes"]]
+        focus_entity = st.selectbox(
+            "Focus on Entity",
+            options=["None (show all)"] + all_entities,
+            help="Show only entities connected to this one",
+            key="entity_focus"
+        )
+
+        depth = st.slider("Connection Depth", 1, 3, 2, key="depth_slider")
+
+        # Apply filters button
+        apply_filters = st.button("🔄 Apply Filters", type="primary", key="apply_filters")
+
+    # Only recompute if filters are applied
+    if apply_filters:
+        filtered_data = network_data
+
+        if selected_cluster != "Full Network (default)":
+            cluster_id = next(
+                (c["id"] for c in clusters if c["label"] == selected_cluster),
+                None
+            )
+            if cluster_id:
+                filtered_data = create_cluster_subgraph(network_data, cluster_id)
+
+        if selected_types and set(selected_types) != set(all_types):
+            filtered_data = filter_by_node_type(filtered_data, selected_types)
+
+        if focus_entity != "None (show all)":
+            entity_id = next(
+                (n["id"] for n in network_data["nodes"] if n["label"] == focus_entity),
+                None
+            )
+            if entity_id:
+                filtered_data = get_connected_entities(network_data, entity_id, depth)
+
+        # Re-render with filtered data
+        st.markdown("### 🔍 Filtered Network View")
+        try:
+            net_filtered = create_pyvis_network(
+                filtered_data,
+                height="600px",
+                width="100%",
+                bgcolor="#0e1117",
+                font_color="#fafafa",
+            )
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".html", mode="w") as f:
+                net_filtered.save_graph(f.name)
+                with open(f.name, "r", encoding='utf-8') as html_file:
+                    html_content = html_file.read()
+                components.html(html_content, height=620, scrolling=True)
+        except Exception as e:
+            st.error(f"Error rendering filtered network: {e}")
+
+    # Network metrics and analysis
+    st.markdown("### 📊 Network Analysis")
+
+    metrics = compute_network_metrics(network_data)
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Total Connections", metrics["edge_count"])
+    with col2:
+        st.metric("Network Components", metrics.get("component_count", 1))
+    with col3:
+        density = metrics.get("density", 0) * 100
+        st.metric("Network Density", f"{density:.1f}%")
+
+    # Key findings
+    if "top_connected" in metrics and metrics["top_connected"]:
+        st.markdown("### 🔑 Key Findings")
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.markdown("**Most Connected Entities:**")
+            for entity_id, centrality in metrics["top_connected"][:5]:
+                node = next(
+                    (n for n in network_data["nodes"] if n["id"] == entity_id),
+                    None
+                )
+                if node:
+                    st.markdown(f"- **{node['label']}** ({centrality:.1%})")
+
+        with col2:
+            if "key_bridges" in metrics and metrics["key_bridges"]:
+                st.markdown("**Key Bridge Entities:**")
+                st.caption("Entities connecting different fraud clusters")
+                for entity_id, centrality in metrics["key_bridges"][:5]:
+                    node = next(
+                        (n for n in network_data["nodes"] if n["id"] == entity_id),
+                        None
+                    )
+                    if node:
+                        st.markdown(f"- **{node['label']}** ({centrality:.1%})")
 
     # Cluster overview
     st.markdown("---")

@@ -150,19 +150,21 @@ Both APIs have mock fallbacks for demo use without keys.
 
 ## App Pages
 
-1. **Home** - Dashboard with database statistics
+1. **Home** - Dashboard with database statistics and demo highlights
 2. **Upload & Analyze** - Batch company risk assessment
 3. **Sanctions Screening** - OFAC/sanctions lookup
 4. **Fraud Database** - Browse 7,000+ fraud cases
-5. **Network Investigation** - Interactive fraud network visualization
+5. **Network Investigation** - ⭐ **DEMO-READY:** Interactive fraud network (works immediately, no setup!)
 6. **Data Management** - Download and update databases
 7. **Settings** - API configuration
 
 ## Network Visualization
 
-The Network Investigation page (`ui/network_viz.py`) provides interactive fraud network analysis:
+The Network Investigation page (`ui/network_viz.py`) provides interactive fraud network analysis.
 
-**Demo Dataset:** `data/examples/fraud_network_demo.json` contains a curated crypto fraud network with:
+**🎯 WORKS OUT OF THE BOX:** No setup or configuration required! The demo loads automatically with impressive visualization.
+
+**Demo Dataset:** `data/examples/fraud_network_demo.json` contains a curated $6.9B crypto fraud network with:
 - 11 companies (FTX, Alameda, Terraform Labs, BitConnect, etc.)
 - 8 persons (executives, founders)
 - 4 addresses (registered offices)
@@ -170,12 +172,19 @@ The Network Investigation page (`ui/network_viz.py`) provides interactive fraud 
 - 38 relationship edges
 
 **Features:**
-- Interactive node-link diagram (drag, zoom, click)
-- Filter by cluster (FTX Network, Terra/Luna, Crypto Contagion, BitConnect)
-- Filter by entity type (company, person, address, case)
-- Focus on specific entity and its connections
-- Network metrics (centrality, bridges, density)
-- Entity details table with risk scores
+- ✅ **Default full network view** - Shows complete graph immediately on page load
+- 🎨 Interactive node-link diagram (drag, zoom, click)
+- 📊 Real-time network metrics (centrality, bridges, density)
+- 🔍 Optional filters: cluster, entity type, focus entity
+- 📈 Key findings analysis (most connected, bridge entities)
+- 🎯 Color-coded by risk score
+- 💰 Total penalties displayed ($6.9B+)
+
+**User Experience:**
+1. Navigate to "Network Investigation" page
+2. Interactive graph appears immediately - no configuration needed
+3. Explore by dragging nodes, zooming, clicking for details
+4. Use sidebar filters to refine view (optional)
 
 ## Database Statistics
 

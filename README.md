@@ -6,6 +6,18 @@ A comprehensive web application for investigating companies, detecting shell com
 ![Streamlit](https://img.shields.io/badge/streamlit-1.30+-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
+## 🎯 Try the Demo First!
+
+**NEW: Interactive Network Visualization** - Works immediately with zero setup!
+
+```bash
+# Quick start - just 2 commands!
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Navigate to **"Network Investigation"** to explore a $6.9B+ fraud network with interactive graphs. No configuration needed!
+
 ## Quick Start
 
 ```bash
@@ -54,18 +66,27 @@ Browse 7,000+ known fraud cases including:
 - Crypto fraud (FTX, Terraform Labs)
 - Accounting fraud (Enron, Wirecard)
 
+### 5. Network Investigation 🌟 **DEMO READY**
+Interactive fraud network visualization with:
+- **Pre-loaded $6.9B crypto fraud network** (works immediately!)
+- 27 interconnected entities (companies, executives, addresses, cases)
+- Drag-and-drop network graph with filtering
+- Network analysis (centrality, bridges, clusters)
+- **Zero setup required** - just load the page!
+
 ---
 
 ## Features at a Glance
 
-| Feature | Description |
-|---------|-------------|
-| **Upload & Analyze** | Batch process Excel/CSV files |
-| **Sanctions Screening** | Check against OFAC and global sanctions |
-| **Fraud Database** | Browse 7,000+ fraud cases |
-| **Risk Scoring** | 0-4 scale with detailed breakdowns |
-| **Data Management** | Download and update databases |
-| **Export Results** | CSV and Excel export |
+| Feature | Description | Setup Required |
+|---------|-------------|----------------|
+| **🕸️ Network Investigation** | **Interactive fraud network demo** | ✅ **None - works immediately!** |
+| **Upload & Analyze** | Batch process Excel/CSV files | Optional APIs |
+| **Sanctions Screening** | Check against OFAC and global sanctions | Download required |
+| **Fraud Database** | Browse 7,000+ fraud cases | Build required |
+| **Risk Scoring** | 0-4 scale with detailed breakdowns | Optional APIs |
+| **Data Management** | Download and update databases | Internet connection |
+| **Export Results** | CSV and Excel export | None |
 
 ---
 
