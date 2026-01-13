@@ -267,6 +267,19 @@ Available datasets:
 
 def download_opensanctions_ofac():
     """Download OFAC press releases dataset."""
+    cache_dir = Path(__file__).parent / 'data' / 'opensanctions'
+    names_path = cache_dir / 'us_ofac_press_releases.names.txt'
+
+    # Check if already exists
+    if names_path.exists():
+        with open(names_path, encoding='utf-8') as f:
+            count = sum(1 for _ in f)
+        print_success(f"Already exists: {names_path}")
+        print_info(f"Total OFAC names: {count:,}")
+        if not ask_yes_no("Re-download anyway?", default=False):
+            return
+        print_info("Re-downloading...")
+
     print_info("Downloading OpenSanctions OFAC data...")
 
     try:
@@ -275,7 +288,7 @@ def download_opensanctions_ofac():
         client = OpenSanctionsClient()
 
         # Download FTM entities
-        filepath = client.download_dataset('ofac_press_releases', force=False)
+        filepath = client.download_dataset('ofac_press_releases', force=True)
         if filepath:
             print_success(f"Downloaded: {filepath}")
 
@@ -295,15 +308,26 @@ def download_opensanctions_ofac():
 
 def download_opensanctions_consolidated():
     """Download consolidated sanctions dataset."""
+    output_dir = Path(__file__).parent / 'data' / 'opensanctions'
+    output_path = output_dir / 'consolidated_names.txt'
+
+    # Check if already exists
+    if output_path.exists():
+        with open(output_path, encoding='utf-8') as f:
+            count = sum(1 for _ in f)
+        print_success(f"Already exists: {output_path}")
+        print_info(f"Total consolidated sanctions names: {count:,}")
+        if not ask_yes_no("Re-download anyway?", default=False):
+            return
+        print_info("Re-downloading...")
+
     print_info("Downloading OpenSanctions Consolidated sanctions...")
 
     try:
         import requests
 
         url = "https://data.opensanctions.org/datasets/latest/sanctions/names.txt"
-        output_dir = Path(__file__).parent / 'data' / 'opensanctions'
         output_dir.mkdir(parents=True, exist_ok=True)
-        output_path = output_dir / 'consolidated_names.txt'
 
         response = requests.get(url, timeout=120)
         response.raise_for_status()
@@ -323,15 +347,26 @@ def download_opensanctions_consolidated():
 
 def download_opensanctions_peps():
     """Download PEPs dataset."""
+    output_dir = Path(__file__).parent / 'data' / 'opensanctions'
+    output_path = output_dir / 'peps_names.txt'
+
+    # Check if already exists
+    if output_path.exists():
+        with open(output_path, encoding='utf-8') as f:
+            count = sum(1 for _ in f)
+        print_success(f"Already exists: {output_path}")
+        print_info(f"Total PEP names: {count:,}")
+        if not ask_yes_no("Re-download anyway?", default=False):
+            return
+        print_info("Re-downloading...")
+
     print_info("Downloading OpenSanctions PEPs data...")
 
     try:
         import requests
 
         url = "https://data.opensanctions.org/datasets/latest/peps/names.txt"
-        output_dir = Path(__file__).parent / 'data' / 'opensanctions'
         output_dir.mkdir(parents=True, exist_ok=True)
-        output_path = output_dir / 'peps_names.txt'
 
         response = requests.get(url, timeout=300)
         response.raise_for_status()
@@ -351,6 +386,29 @@ def download_opensanctions_peps():
 
 def download_icij_offshore():
     """Download ICIJ Offshore Leaks database."""
+    icij_dir = Path(__file__).parent / 'data' / 'icij' / 'csv'
+
+    # Check if already exists
+    if icij_dir.exists():
+        csv_files = list(icij_dir.glob('*.csv'))
+        if csv_files:
+            print_success(f"Already exists: {icij_dir}")
+            print_info(f"Found {len(csv_files)} CSV files")
+            if not ask_yes_no("Re-download anyway?", default=False):
+                # Still offer to build names index
+                names_file = Path(__file__).parent / 'data' / 'icij' / 'offshore_names.txt'
+                if not names_file.exists():
+                    if ask_yes_no("Build names index file for fast lookups?"):
+                        try:
+                            from scrapers.icij_offshore import ICIJOffshoreClient
+                            client = ICIJOffshoreClient()
+                            names_file = client.build_names_file()
+                            print_success(f"Names index: {names_file}")
+                        except Exception as e:
+                            print_error(f"Failed to build names index: {e}")
+                return
+            print_info("Re-downloading...")
+
     print_info("Downloading ICIJ Offshore Leaks database...")
     print_warning("This is a large download (~500 MB) and may take several minutes.")
 
@@ -358,7 +416,7 @@ def download_icij_offshore():
         from scrapers.icij_offshore import ICIJOffshoreClient
 
         client = ICIJOffshoreClient()
-        result = client.download_database(force=False)
+        result = client.download_database(force=True)
 
         if result:
             print_success(f"Downloaded and extracted to: {result}")
