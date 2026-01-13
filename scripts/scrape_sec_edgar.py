@@ -238,7 +238,7 @@ def main(output_path: str = "data/sec_enforcement.json", start_date: str = "2020
         "companies": [asdict(h) for h in hits],
     }
 
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
 
     print(f"Saved to {output_file}")

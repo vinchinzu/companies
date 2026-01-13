@@ -417,7 +417,7 @@ if __name__ == '__main__':
     # Test 1: Terraform Labs (known company)
     print("\n--- Test 1: Terraform Labs (known fraud case) ---")
     try:
-        with open('data/brave_api_response_example.json') as f:
+        with open('data/brave_api_response_example.json', encoding='utf-8') as f:
             terraform_response = json.load(f)
 
         result = scorer.score_response(terraform_response, 'Terraform Labs')
@@ -436,7 +436,7 @@ if __name__ == '__main__':
     # Test 2: Shell company
     print("\n--- Test 2: OOO Khartiya (OFAC sanctioned) ---")
     try:
-        with open('data/brave_api_response_shell_company.json') as f:
+        with open('data/brave_api_response_shell_company.json', encoding='utf-8') as f:
             shell_response = json.load(f)
 
         result = scorer.score_response(shell_response, 'OOO Khartiya')

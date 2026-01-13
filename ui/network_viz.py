@@ -62,7 +62,7 @@ def load_network_data(json_path: str | Path) -> dict[str, Any]:
     Returns:
         Dict with nodes, edges, and metadata
     """
-    with open(json_path) as f:
+    with open(json_path, encoding='utf-8') as f:
         return json.load(f)
 
 
@@ -387,7 +387,7 @@ def generate_html(
     """
     if output_path:
         net.save_graph(str(output_path))
-        with open(output_path) as f:
+        with open(output_path, encoding='utf-8') as f:
             return f.read()
     else:
         return net.generate_html()

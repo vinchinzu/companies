@@ -106,7 +106,7 @@ def main(max_downloads: int = 25, delay: float = 4.0):
     not_found = 0
     rate_limited = False
 
-    with open(log_file, "a") as log:
+    with open(log_file, "a", encoding='utf-8') as log:
         log.write(f"\n=== Download run at {time.strftime('%Y-%m-%d %H:%M:%S')} ===\n")
 
         for comp_num in COMPLAINT_RANGE_2025:

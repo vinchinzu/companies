@@ -27,7 +27,7 @@ def main():
         return
 
     # Load enforcement data
-    with open(enforcement_file) as f:
+    with open(enforcement_file, encoding='utf-8') as f:
         data = json.load(f)
 
     companies = data.get("companies", [])

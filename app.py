@@ -1005,7 +1005,7 @@ def network_viz_page():
         # Save to temp file and display
         with tempfile.NamedTemporaryFile(delete=False, suffix=".html", mode="w") as f:
             net.save_graph(f.name)
-            with open(f.name, "r") as html_file:
+            with open(f.name, "r", encoding='utf-8') as html_file:
                 html_content = html_file.read()
             components.html(html_content, height=620, scrolling=True)
 

@@ -177,7 +177,7 @@ def setup_env_file():
 
         # Read current values
         current = {}
-        with open(env_file) as f:
+        with open(env_file, encoding='utf-8') as f:
             for line in f:
                 if '=' in line:
                     key, value = line.strip().split('=', 1)
@@ -203,7 +203,7 @@ Both APIs have free tiers. You can skip this and use mock data for demo.
     oc_key = input("Enter OpenCorporates API token (or press Enter to skip): ").strip()
 
     # Write .env file
-    with open(env_file, 'w') as f:
+    with open(env_file, 'w', encoding='utf-8') as f:
         if brave_key:
             f.write(f"BRAVE_API_KEY={brave_key}\n")
         if oc_key:
@@ -285,7 +285,7 @@ def download_opensanctions_ofac():
             print_success(f"Names list: {names_path}")
 
             # Count entries
-            with open(names_path) as f:
+            with open(names_path, encoding='utf-8') as f:
                 count = sum(1 for _ in f)
             print_info(f"Total OFAC names: {count:,}")
 
@@ -311,7 +311,7 @@ def download_opensanctions_consolidated():
         with open(output_path, 'wb') as f:
             f.write(response.content)
 
-        with open(output_path) as f:
+        with open(output_path, encoding='utf-8') as f:
             count = sum(1 for _ in f)
 
         print_success(f"Downloaded: {output_path}")
@@ -339,7 +339,7 @@ def download_opensanctions_peps():
         with open(output_path, 'wb') as f:
             f.write(response.content)
 
-        with open(output_path) as f:
+        with open(output_path, encoding='utf-8') as f:
             count = sum(1 for _ in f)
 
         print_success(f"Downloaded: {output_path}")
@@ -429,7 +429,7 @@ def verify_installation():
     # Check for OFAC names
     ofac_names = data_dir / 'opensanctions' / 'us_ofac_press_releases.names.txt'
     if ofac_names.exists():
-        with open(ofac_names) as f:
+        with open(ofac_names, encoding='utf-8') as f:
             count = sum(1 for _ in f)
         checks.append((f"OFAC names ({count:,} entries)", True))
     else:
