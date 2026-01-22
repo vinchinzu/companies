@@ -168,3 +168,17 @@ pip-delete-this-directory.txt
 # Streamlit
 # ----------------------
 .streamlit/secrets.toml
+
+# ----------------------
+# Trade Module
+# ----------------------
+# Demo output and test results
+trade/demo_output/
+trade/demo_output/**
+trade/*_response_*.json
+trade/*_test_results.txt
+
+# Trade data files (large downloads)
+trade/data/icij_offshore/
+trade/data/icij_offshore/**
+!trade/data/icij_offshore/.gitkeep
