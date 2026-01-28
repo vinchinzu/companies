@@ -18,6 +18,22 @@ streamlit run app.py
 
 Navigate to **"Network Investigation"** to explore a $6.9B+ fraud network with interactive graphs. No configuration needed!
 
+### Optional: Charm CLI (TUI)
+
+For a terminal-native quick look, run the Charm TUI prototype:
+
+```bash
+cd cli
+go run .
+```
+
+To use a live dataset, populate `data/transactions.csv` (template included) and run:
+
+```bash
+cd cli
+go run . -mode live
+```
+
 ## Quick Start
 
 ```bash
@@ -66,7 +82,15 @@ Browse 7,000+ known fraud cases including:
 - Crypto fraud (FTX, Terraform Labs)
 - Accounting fraud (Enron, Wirecard)
 
-### 5. Network Investigation 🌟 **DEMO READY**
+### 5. Trade Verification 🌟 **NEW**
+Stripe-quality company verification UI with:
+- Beautiful drag-and-drop file upload
+- Smart column auto-detection
+- Real-time processing with progress
+- Risk scoring with visual gauges
+- Multi-format export (Excel, CSV, JSON)
+
+### 6. Network Investigation 🌟 **DEMO READY**
 Interactive fraud network visualization with:
 - **Pre-loaded $6.9B crypto fraud network** (works immediately!)
 - 27 interconnected entities (companies, executives, addresses, cases)
@@ -80,13 +104,14 @@ Interactive fraud network visualization with:
 
 | Feature | Description | Setup Required |
 |---------|-------------|----------------|
+| **🔍 Trade Verification** | **Stripe-quality company verification UI** | ✅ **None - demo mode works!** |
 | **🕸️ Network Investigation** | **Interactive fraud network demo** | ✅ **None - works immediately!** |
 | **Upload & Analyze** | Batch process Excel/CSV files | Optional APIs |
 | **Sanctions Screening** | Check against OFAC and global sanctions | Download required |
 | **Fraud Database** | Browse 7,000+ fraud cases | Build required |
 | **Risk Scoring** | 0-4 scale with detailed breakdowns | Optional APIs |
 | **Data Management** | Download and update databases | Internet connection |
-| **Export Results** | CSV and Excel export | None |
+| **Export Results** | CSV, Excel, and JSON export | None |
 
 ---
 
