@@ -5,77 +5,150 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Company Risk Checker</title>
 <style>
+:root { --bg: #0a0a0f; --card: #12121a; --border: #222; --accent: #635bff; --green: #00d4aa; --yellow: #ffbb00; --red: #ff5252; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; min-height: 100vh; padding: 2rem; }
-.container { max-width: 1200px; margin: 0 auto; }
-h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #fff; }
-.subtitle { color: #888; margin-bottom: 2rem; }
-.upload-zone { border: 2px dashed #333; border-radius: 12px; padding: 3rem; text-align: center; margin-bottom: 2rem; cursor: pointer; transition: all 0.2s; }
-.upload-zone:hover, .upload-zone.dragover { border-color: #635bff; background: rgba(99,91,255,0.05); }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: #e0e0e0; min-height: 100vh; }
+.container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+h1 { font-size: 1.6rem; color: #fff; }
+.subtitle { color: #666; font-size: 0.9rem; }
+.header-btns { display: flex; gap: 0.5rem; }
+.config-btn { background: var(--card); border: 1px solid var(--border); color: #888; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+.config-btn:hover { border-color: var(--accent); color: #fff; }
+.api-status { font-size: 0.8rem; padding: 0.4rem 0.8rem; border-radius: 6px; }
+.api-status.ok { background: rgba(0,212,170,0.15); color: var(--green); }
+.api-status.missing { background: rgba(255,82,82,0.15); color: var(--red); }
+
+.upload-zone { border: 2px dashed #333; border-radius: 12px; padding: 3rem; text-align: center; cursor: pointer; transition: all 0.2s; margin-bottom: 1.5rem; }
+.upload-zone:hover, .upload-zone.dragover { border-color: var(--accent); background: rgba(99,91,255,0.05); }
 .upload-zone input { display: none; }
-.upload-icon { font-size: 3rem; margin-bottom: 1rem; }
-.formats { margin-top: 1rem; }
-.formats span { background: #1a1a24; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.8rem; margin: 0 0.25rem; color: #888; }
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-.stat { background: linear-gradient(145deg, #16161f, #1a1a26); border: 1px solid #222; border-radius: 12px; padding: 1.25rem; }
-.stat-value { font-size: 2rem; font-weight: 700; }
-.stat-label { font-size: 0.8rem; color: #888; text-transform: uppercase; margin-top: 0.25rem; }
-.stat.high .stat-value { color: #ff5252; }
-.stat.medium .stat-value { color: #ffbb00; }
-.stat.low .stat-value { color: #00d4aa; }
-table { width: 100%; border-collapse: collapse; background: #12121a; border-radius: 12px; overflow: hidden; }
-th { background: #1a1a24; padding: 1rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; color: #888; }
-td { padding: 1rem; border-bottom: 1px solid #222; }
+.upload-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.formats span { background: #1a1a24; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin: 0 0.2rem; color: #666; }
+.demo-row { text-align: center; margin-bottom: 2rem; }
+.btn { background: linear-gradient(135deg, var(--accent), #4f46e5); color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: 500; font-size: 0.9rem; }
+.btn:hover { filter: brightness(1.1); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-secondary { background: var(--card); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--accent); }
+
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+@media (max-width: 800px) { .stats { grid-template-columns: repeat(3, 1fr); } }
+.stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; }
+.stat-value { font-size: 1.75rem; font-weight: 700; }
+.stat-label { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-top: 0.2rem; }
+.stat.high .stat-value { color: var(--red); }
+.stat.medium .stat-value { color: var(--yellow); }
+.stat.low .stat-value { color: var(--green); }
+.stat.sanctions .stat-value { color: #ff3333; }
+
+.actions { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+.search { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem 0.75rem; color: #fff; width: 200px; font-size: 0.9rem; }
+.search:focus { outline: none; border-color: var(--accent); }
+.filter-select { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; color: #fff; font-size: 0.9rem; }
+
+table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 10px; overflow: hidden; font-size: 0.9rem; }
+th { background: #1a1a24; padding: 0.75rem 1rem; text-align: left; font-size: 0.7rem; text-transform: uppercase; color: #666; font-weight: 600; }
+td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: rgba(99,91,255,0.03); }
-.risk-badge { display: inline-block; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
-.risk-badge.high { background: rgba(255,82,82,0.15); color: #ff5252; }
-.risk-badge.medium { background: rgba(255,187,0,0.15); color: #ffbb00; }
-.risk-badge.low { background: rgba(0,212,170,0.15); color: #00d4aa; }
-.score-bar { width: 60px; height: 6px; background: #222; border-radius: 3px; overflow: hidden; }
+tr.expanded td { background: rgba(99,91,255,0.05); }
+.company-name { font-weight: 500; color: #fff; cursor: pointer; }
+.company-name:hover { color: var(--accent); }
+.risk-badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+.risk-badge.high { background: rgba(255,82,82,0.15); color: var(--red); }
+.risk-badge.medium { background: rgba(255,187,0,0.15); color: var(--yellow); }
+.risk-badge.low { background: rgba(0,212,170,0.15); color: var(--green); }
+.sanctions-hit { background: rgba(255,0,0,0.2); color: #ff3333; font-weight: 600; }
+.score-bar { width: 50px; height: 5px; background: #222; border-radius: 3px; display: inline-block; vertical-align: middle; margin-left: 0.5rem; }
 .score-fill { height: 100%; border-radius: 3px; }
-.flags { font-size: 0.8rem; color: #ff5252; }
-.btn { background: linear-gradient(135deg, #635bff, #4f46e5); color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: transform 0.1s; }
-.btn:hover { transform: translateY(-1px); }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.actions { margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; }
-.search { background: #1a1a24; border: 1px solid #333; border-radius: 8px; padding: 0.6rem 1rem; color: #fff; width: 250px; }
-.search:focus { outline: none; border-color: #635bff; }
-.hidden { display: none; }
-.demo-btn { background: #1a1a24; border: 1px solid #333; }
-.demo-btn:hover { border-color: #635bff; }
+.flags { font-size: 0.8rem; color: var(--red); }
+.flags-warn { color: var(--yellow); }
+
+.detail-panel { background: #0d0d14; border-top: 1px solid var(--border); padding: 1rem; }
+.detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.detail-section h4 { font-size: 0.75rem; color: #666; text-transform: uppercase; margin-bottom: 0.5rem; }
+.detail-section p { font-size: 0.85rem; margin-bottom: 0.25rem; }
+.detail-section .value { color: #fff; }
+.detail-section .hit { color: var(--red); }
+.detail-section .clear { color: var(--green); }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.modal { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; max-width: 500px; width: 90%; }
+.modal h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+.modal label { display: block; margin-bottom: 0.5rem; font-size: 0.85rem; color: #888; }
+.modal input { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; color: #fff; margin-bottom: 1rem; font-size: 0.9rem; }
+.modal input:focus { outline: none; border-color: var(--accent); }
+.modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
+.modal small { color: #666; font-size: 0.8rem; display: block; margin-top: -0.5rem; margin-bottom: 1rem; }
+.modal a { color: var(--accent); }
+
+.progress-bar { height: 4px; background: var(--border); border-radius: 2px; margin: 1rem 0; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); transition: width 0.3s; }
+.status-text { font-size: 0.85rem; color: #888; margin-bottom: 1rem; }
+
+.warning-box { background: rgba(255,187,0,0.1); border: 1px solid rgba(255,187,0,0.3); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; }
+.warning-box h3 { color: var(--yellow); font-size: 0.9rem; margin-bottom: 0.5rem; }
+.warning-box p { font-size: 0.85rem; color: #888; }
+
+.hidden { display: none !important; }
 </style>
 </head>
 <body>
 <div class="container">
-  <h1>Company Risk Checker</h1>
-  <p class="subtitle">Offline company verification - no server required</p>
+  <header>
+    <div>
+      <h1>Company Risk Checker</h1>
+      <p class="subtitle">ITA Consolidated Screening List &amp; Risk Assessment</p>
+    </div>
+    <div class="header-btns">
+      <span class="api-status" id="apiStatus"></span>
+      <button class="config-btn" onclick="showConfig()">⚙️ API Settings</button>
+    </div>
+  </header>
+
+  <div id="warningBox" class="warning-box hidden">
+    <h3>⚠️ API Key Required</h3>
+    <p>Configure your ITA API key to enable sanctions screening. Click "API Settings" above.</p>
+  </div>
 
   <div id="uploadSection">
     <div class="upload-zone" id="dropZone">
       <div class="upload-icon">📁</div>
       <div>Drop CSV file here or click to browse</div>
-      <div class="formats"><span>.csv</span></div>
+      <div class="formats" style="margin-top:0.75rem"><span>.csv</span></div>
       <input type="file" id="fileInput" accept=".csv">
     </div>
-    <div style="text-align:center;margin-bottom:2rem;">
-      <span style="color:#666">or</span>
-      <button class="btn demo-btn" onclick="loadDemo()" style="margin-left:1rem;">Load Demo Data</button>
+    <div class="demo-row">
+      <span style="color:#555">or</span>
+      <button class="btn btn-secondary" onclick="loadDemo()" style="margin-left:0.75rem">Load Demo Data</button>
     </div>
+  </div>
+
+  <div id="processingSection" class="hidden">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="status-text" id="statusText">Processing...</div>
   </div>
 
   <div id="resultsSection" class="hidden">
     <div class="stats">
       <div class="stat"><div class="stat-value" id="totalCount">0</div><div class="stat-label">Total</div></div>
+      <div class="stat sanctions"><div class="stat-value" id="sanctionsCount">0</div><div class="stat-label">Sanctions Hits</div></div>
       <div class="stat high"><div class="stat-value" id="highCount">0</div><div class="stat-label">High Risk</div></div>
-      <div class="stat medium"><div class="stat-value" id="mediumCount">0</div><div class="stat-label">Medium Risk</div></div>
+      <div class="stat medium"><div class="stat-value" id="mediumCount">0</div><div class="stat-label">Medium</div></div>
       <div class="stat low"><div class="stat-value" id="lowCount">0</div><div class="stat-label">Low Risk</div></div>
     </div>
 
     <div class="actions">
-      <input type="text" class="search" id="searchInput" placeholder="Search companies...">
-      <button class="btn" onclick="exportCSV()">Export CSV</button>
-      <button class="btn demo-btn" onclick="reset()">New Upload</button>
+      <input type="text" class="search" id="searchInput" placeholder="Search...">
+      <select class="filter-select" id="riskFilter">
+        <option value="all">All Risks</option>
+        <option value="sanctions">Sanctions Hits</option>
+        <option value="high">High Risk</option>
+        <option value="medium">Medium Risk</option>
+        <option value="low">Low Risk</option>
+      </select>
+      <button class="btn" onclick="exportCSV()">📥 Export CSV</button>
+      <button class="btn btn-secondary" onclick="reset()">New Upload</button>
     </div>
 
     <table>
@@ -85,6 +158,7 @@ tr:hover td { background: rgba(99,91,255,0.03); }
           <th>Jurisdiction</th>
           <th>Score</th>
           <th>Risk</th>
+          <th>Sanctions</th>
           <th>Flags</th>
         </tr>
       </thead>
@@ -93,228 +167,405 @@ tr:hover td { background: rgba(99,91,255,0.03); }
   </div>
 </div>
 
+<div id="configModal" class="modal-overlay hidden">
+  <div class="modal">
+    <h2>API Configuration</h2>
+
+    <label>ITA API Key (trade.gov) *</label>
+    <input type="text" id="itaKey" placeholder="Your subscription key">
+    <small>Get free key at <a href="https://developer.trade.gov" target="_blank">developer.trade.gov</a> → Subscribe to "Consolidated Screening List"</small>
+
+    <label>CORS Proxy URL *</label>
+    <input type="text" id="corsProxy" value="https://corsproxy.io/?">
+    <small>Required to call APIs from browser. Default usually works. Alternatives: <code>https://api.allorigins.win/raw?url=</code></small>
+
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeConfig()">Cancel</button>
+      <button class="btn" onclick="saveConfig()">Save</button>
+    </div>
+  </div>
+</div>
+
 <script>
-// Tax haven jurisdictions
-const TAX_HAVENS = new Set(['ky','vg','pa','bz','sc','ae','hk','mh','ch','li','lu','mc','je','gg','im','bm','an','bs','ai','cayman','virgin','panama','belize','seychelles','marshall','bermuda','bahamas','jersey','guernsey','liechtenstein','monaco','luxembourg']);
+// ============== CONFIG ==============
+let config = {
+  itaKey: localStorage.getItem('itaKey') || '',
+  corsProxy: localStorage.getItem('corsProxy') || 'https://corsproxy.io/?'
+};
 
-// Suspicious name patterns
-const SHELL_PATTERNS = [/offshore/i, /holdings?$/i, /international$/i, /global$/i, /ventures?$/i, /trading$/i, /investments?$/i, /partners?$/i, /capital$/i, /assets?$/i, /trust$/i, /limited$/i, /ltd$/i, /llc$/i, /corp$/i];
-const LEGIT_PATTERNS = [/inc\.?$/i, /incorporated$/i, /plc$/i, /gmbh$/i, /ag$/i, /sa$/i, /nv$/i];
-const MAJOR_CORPS = ['apple','microsoft','google','alphabet','amazon','tesla','meta','facebook','nvidia','oracle','ibm','intel','cisco','adobe','salesforce','walmart','costco','target','home depot','lowes','mcdonalds','starbucks','nike','coca-cola','pepsi','procter','johnson','pfizer','merck','jpmorgan','chase','bank of america','wells fargo','goldman','morgan stanley','visa','mastercard','american express','berkshire','exxon','chevron','shell','bp','toyota','ford','general motors','boeing','lockheed','raytheon','disney','netflix','comcast','att','verizon','tmobile'];
+// ============== TAX HAVENS ==============
+const TAX_HAVENS = new Set(['ky','vg','pa','bz','sc','ae','hk','mh','ch','li','lu','mc','je','gg','im','bm','an','bs','ai','mu','cy','mt','gi','cw','tc']);
+const TAX_HAVEN_NAMES = ['cayman','virgin island','panama','belize','seychelles','marshall island','bermuda','bahamas','jersey','guernsey','liechtenstein','monaco','luxembourg','mauritius','cyprus','malta','gibraltar','curacao','turks'];
 
+// ============== PATTERNS ==============
+const SHELL_PATTERNS = [/\boffshore\b/i, /\bholdings?\s*(ltd|limited|llc|inc)?$/i, /\binternational\s*(ltd|limited|llc)?$/i, /\bglobal\s*(ventures?|trading|investments?)?\s*(ltd)?$/i, /\bventures?\s*(ltd)?$/i, /\btrading\s*(co|corp|ltd)?$/i, /\binvestments?\s*(ltd)?$/i, /\bassets?\b/i, /\btrust\b/i];
+const LEGIT_INDICATORS = [/\binc\.?$/i, /\bincorporated$/i, /\bplc$/i, /\bcorporation$/i, /\bgmbh$/i, /\bag$/i, /\bsa$/i, /\bnv$/i];
+const MAJOR_CORPS = ['apple','microsoft','google','alphabet','amazon','tesla','meta','nvidia','oracle','ibm','intel','cisco','adobe','salesforce','walmart','costco','target','home depot','mcdonalds','starbucks','nike','coca-cola','pepsi','johnson','pfizer','jpmorgan','bank of america','wells fargo','goldman sachs','visa','mastercard','berkshire','exxon','chevron','toyota','ford','boeing','disney','netflix','verizon'];
+
+// ============== STATE ==============
 let companies = [];
 let results = [];
+let expandedRow = null;
 
-// DOM elements
-const dropZone = document.getElementById('dropZone');
-const fileInput = document.getElementById('fileInput');
-const uploadSection = document.getElementById('uploadSection');
-const resultsSection = document.getElementById('resultsSection');
-const resultsBody = document.getElementById('resultsBody');
-const searchInput = document.getElementById('searchInput');
+// ============== DOM ==============
+const $ = id => document.getElementById(id);
+const dropZone = $('dropZone');
+const fileInput = $('fileInput');
+const uploadSection = $('uploadSection');
+const processingSection = $('processingSection');
+const resultsSection = $('resultsSection');
+const resultsBody = $('resultsBody');
+const searchInput = $('searchInput');
+const riskFilter = $('riskFilter');
 
-// File handling
+// ============== INIT ==============
+updateApiStatus();
+
+function updateApiStatus() {
+  const status = $('apiStatus');
+  const warning = $('warningBox');
+  if (config.itaKey) {
+    status.textContent = '✓ API Ready';
+    status.className = 'api-status ok';
+    warning.classList.add('hidden');
+  } else {
+    status.textContent = '✗ No API Key';
+    status.className = 'api-status missing';
+    warning.classList.remove('hidden');
+  }
+}
+
+// ============== FILE HANDLING ==============
 dropZone.onclick = () => fileInput.click();
 dropZone.ondragover = e => { e.preventDefault(); dropZone.classList.add('dragover'); };
 dropZone.ondragleave = () => dropZone.classList.remove('dragover');
 dropZone.ondrop = e => { e.preventDefault(); dropZone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); };
 fileInput.onchange = e => handleFile(e.target.files[0]);
-searchInput.oninput = () => renderResults();
+searchInput.oninput = renderResults;
+riskFilter.onchange = renderResults;
 
 function handleFile(file) {
-  if (!file || !file.name.endsWith('.csv')) { alert('Please upload a CSV file'); return; }
+  if (!file?.name.endsWith('.csv')) { alert('Please upload a CSV file'); return; }
   const reader = new FileReader();
   reader.onload = e => processCSV(e.target.result);
   reader.readAsText(file);
 }
 
-function processCSV(text) {
-  const lines = text.trim().split('\n');
-  if (lines.length < 2) { alert('CSV must have header and data rows'); return; }
+function parseCSVLine(line) {
+  const result = []; let current = ''; let inQuotes = false;
+  for (const char of line) {
+    if (char === '"') inQuotes = !inQuotes;
+    else if (char === ',' && !inQuotes) { result.push(current.trim()); current = ''; }
+    else current += char;
+  }
+  result.push(current.trim());
+  return result.map(s => s.replace(/^"|"$/g, ''));
+}
 
-  const headers = parseCSVLine(lines[0]).map(h => h.toLowerCase().trim());
-  const nameCol = headers.findIndex(h => h.includes('company') || h.includes('name') || h.includes('entity'));
-  const jurCol = headers.findIndex(h => h.includes('jurisdiction') || h.includes('country') || h.includes('jur'));
+async function processCSV(text) {
+  const lines = text.trim().split('\n').filter(l => l.trim());
+  if (lines.length < 2) { alert('CSV must have header and data'); return; }
+
+  const headers = parseCSVLine(lines[0]).map(h => h.toLowerCase());
+  const nameCol = headers.findIndex(h => /company|name|entity|vendor|supplier|counterparty/.test(h));
+  const jurCol = headers.findIndex(h => /jurisdiction|country|jur|state|region/.test(h));
+  const addrCol = headers.findIndex(h => /address|location|registered/.test(h));
 
   if (nameCol === -1) { alert('Could not find company name column'); return; }
 
   companies = [];
   for (let i = 1; i < lines.length; i++) {
     const cols = parseCSVLine(lines[i]);
-    if (cols[nameCol]) {
+    if (cols[nameCol]?.trim()) {
       companies.push({
         name: cols[nameCol].trim(),
-        jurisdiction: jurCol !== -1 ? (cols[jurCol] || '').trim() : ''
+        jurisdiction: jurCol !== -1 ? (cols[jurCol] || '').trim() : '',
+        address: addrCol !== -1 ? (cols[addrCol] || '').trim() : ''
       });
     }
   }
 
-  scoreCompanies();
-  showResults();
-}
+  if (!companies.length) { alert('No valid companies found'); return; }
 
-function parseCSVLine(line) {
-  const result = [];
-  let current = '';
-  let inQuotes = false;
-  for (let i = 0; i < line.length; i++) {
-    const char = line[i];
-    if (char === '"') { inQuotes = !inQuotes; }
-    else if (char === ',' && !inQuotes) { result.push(current); current = ''; }
-    else { current += char; }
-  }
-  result.push(current);
-  return result.map(s => s.replace(/^"|"$/g, '').trim());
-}
-
-function scoreCompanies() {
-  results = companies.map(c => {
-    let score = 50;
-    const flags = [];
-    const nameLower = c.name.toLowerCase();
-    const jurLower = c.jurisdiction.toLowerCase().replace(/[^a-z]/g, '');
-
-    // Major corporation bonus
-    if (MAJOR_CORPS.some(corp => nameLower.includes(corp))) {
-      score += 40;
-    }
-
-    // Tax haven penalty
-    if (TAX_HAVENS.has(jurLower) || [...TAX_HAVENS].some(th => jurLower.includes(th))) {
-      score -= 25;
-      flags.push('Tax haven jurisdiction');
-    }
-
-    // Shell company name patterns
-    let shellScore = 0;
-    SHELL_PATTERNS.forEach(p => { if (p.test(c.name)) shellScore++; });
-    if (shellScore >= 2) {
-      score -= 15;
-      flags.push('Shell company naming pattern');
-    } else if (shellScore === 1) {
-      score -= 5;
-    }
-
-    // Legitimate name patterns
-    if (LEGIT_PATTERNS.some(p => p.test(c.name))) {
-      score += 5;
-    }
-
-    // Very short or very long names
-    if (c.name.length < 5) {
-      score -= 10;
-      flags.push('Unusually short name');
-    }
-    if (c.name.length > 80) {
-      score -= 5;
-      flags.push('Unusually long name');
-    }
-
-    // No jurisdiction provided
-    if (!c.jurisdiction) {
-      score -= 5;
-    }
-
-    // Clamp score
-    score = Math.max(5, Math.min(95, score));
-
-    return {
-      name: c.name,
-      jurisdiction: c.jurisdiction || 'Unknown',
-      score,
-      risk: score >= 70 ? 'low' : score >= 40 ? 'medium' : 'high',
-      flags
-    };
-  });
-
-  results.sort((a, b) => a.score - b.score);
-}
-
-function showResults() {
   uploadSection.classList.add('hidden');
+  processingSection.classList.remove('hidden');
+
+  await scoreAllCompanies();
+
+  processingSection.classList.add('hidden');
   resultsSection.classList.remove('hidden');
   renderResults();
 }
 
+// ============== SCORING ==============
+async function scoreAllCompanies() {
+  results = [];
+
+  for (let i = 0; i < companies.length; i++) {
+    $('progressFill').style.width = ((i + 1) / companies.length * 100) + '%';
+    $('statusText').textContent = `Processing ${i + 1}/${companies.length}: ${companies[i].name}`;
+
+    const result = await scoreCompany(companies[i]);
+    results.push(result);
+
+    // Small delay between API calls
+    await new Promise(r => setTimeout(r, 100));
+  }
+
+  results.sort((a, b) => a.score - b.score);
+}
+
+async function scoreCompany(company) {
+  const nameLower = company.name.toLowerCase();
+  const jurLower = (company.jurisdiction || '').toLowerCase().replace(/[^a-z]/g, '');
+
+  let score = 50;
+  const flags = [];
+  const details = {
+    sanctions: { checked: false, hits: [], error: null },
+    jurisdiction: { risk: 'unknown', country: company.jurisdiction || 'Unknown' },
+    patterns: []
+  };
+
+  // 1. ITA SANCTIONS CHECK
+  if (config.itaKey && config.corsProxy) {
+    try {
+      const itaResult = await checkITASanctions(company.name);
+      details.sanctions.checked = true;
+      if (itaResult.total > 0) {
+        score -= 50;
+        flags.push('🚨 SANCTIONS HIT');
+        details.sanctions.hits = itaResult.results.slice(0, 5);
+      }
+    } catch (e) {
+      details.sanctions.error = e.message;
+    }
+  }
+
+  // 2. JURISDICTION RISK
+  const isTaxHaven = TAX_HAVENS.has(jurLower) || TAX_HAVEN_NAMES.some(th => jurLower.includes(th) || (company.jurisdiction || '').toLowerCase().includes(th));
+  if (isTaxHaven) {
+    score -= 20;
+    flags.push('Tax haven jurisdiction');
+    details.jurisdiction.risk = 'high';
+  } else if (jurLower) {
+    details.jurisdiction.risk = 'normal';
+  }
+
+  // 3. NAME PATTERNS
+  if (MAJOR_CORPS.some(corp => nameLower.includes(corp))) {
+    score += 30;
+    details.patterns.push('Major corporation');
+  }
+
+  let shellScore = SHELL_PATTERNS.filter(p => p.test(company.name)).length;
+  if (shellScore >= 2) {
+    score -= 15;
+    flags.push('Shell company naming');
+    details.patterns.push('Multiple shell indicators');
+  } else if (shellScore === 1) {
+    score -= 5;
+    details.patterns.push('Single shell indicator');
+  }
+
+  if (LEGIT_INDICATORS.some(p => p.test(company.name))) {
+    score += 5;
+    details.patterns.push('Formal legal entity');
+  }
+
+  if (company.name.length < 4) {
+    score -= 10;
+    flags.push('Very short name');
+  }
+
+  score = Math.max(0, Math.min(100, score));
+
+  return {
+    name: company.name,
+    jurisdiction: company.jurisdiction || 'Unknown',
+    address: company.address,
+    score,
+    risk: score >= 70 ? 'low' : score >= 40 ? 'medium' : 'high',
+    sanctionsHit: details.sanctions.hits.length > 0,
+    flags,
+    details
+  };
+}
+
+// ============== ITA API ==============
+async function checkITASanctions(companyName) {
+  // ITA Consolidated Screening List endpoint
+  const baseUrl = 'https://api.trade.gov/gateway/v1/consolidated_screening_list/search';
+  const params = new URLSearchParams({
+    name: companyName,
+    fuzzy_name: 'true',
+    size: '10'
+  });
+
+  const targetUrl = `${baseUrl}?${params}`;
+  const proxyUrl = config.corsProxy + encodeURIComponent(targetUrl);
+
+  const resp = await fetch(proxyUrl, {
+    method: 'GET',
+    headers: {
+      'subscription-key': config.itaKey
+    }
+  });
+
+  if (!resp.ok) {
+    const text = await resp.text();
+    throw new Error(`HTTP ${resp.status}: ${text.slice(0, 100)}`);
+  }
+
+  return await resp.json();
+}
+
+// ============== RENDER ==============
 function renderResults() {
   const search = searchInput.value.toLowerCase();
-  const filtered = search ? results.filter(r => r.name.toLowerCase().includes(search)) : results;
+  const risk = riskFilter.value;
 
-  document.getElementById('totalCount').textContent = results.length;
-  document.getElementById('highCount').textContent = results.filter(r => r.risk === 'high').length;
-  document.getElementById('mediumCount').textContent = results.filter(r => r.risk === 'medium').length;
-  document.getElementById('lowCount').textContent = results.filter(r => r.risk === 'low').length;
+  let filtered = results;
+  if (search) filtered = filtered.filter(r => r.name.toLowerCase().includes(search) || r.jurisdiction.toLowerCase().includes(search));
+  if (risk === 'sanctions') filtered = filtered.filter(r => r.sanctionsHit);
+  else if (risk !== 'all') filtered = filtered.filter(r => r.risk === risk);
 
-  const color = s => s >= 70 ? '#00d4aa' : s >= 40 ? '#ffbb00' : '#ff5252';
+  $('totalCount').textContent = results.length;
+  $('sanctionsCount').textContent = results.filter(r => r.sanctionsHit).length;
+  $('highCount').textContent = results.filter(r => r.risk === 'high').length;
+  $('mediumCount').textContent = results.filter(r => r.risk === 'medium').length;
+  $('lowCount').textContent = results.filter(r => r.risk === 'low').length;
 
-  resultsBody.innerHTML = filtered.map(r => `
-    <tr>
-      <td><strong>${escapeHtml(r.name)}</strong></td>
-      <td>${escapeHtml(r.jurisdiction)}</td>
-      <td>
-        <div style="display:flex;align-items:center;gap:0.5rem;">
-          <span>${r.score}</span>
-          <div class="score-bar"><div class="score-fill" style="width:${r.score}%;background:${color(r.score)}"></div></div>
-        </div>
-      </td>
-      <td><span class="risk-badge ${r.risk}">${r.risk.toUpperCase()}</span></td>
-      <td class="flags">${r.flags.join(', ') || '-'}</td>
+  const color = s => s >= 70 ? 'var(--green)' : s >= 40 ? 'var(--yellow)' : 'var(--red)';
+
+  resultsBody.innerHTML = filtered.map((r, i) => `
+    <tr class="${expandedRow === i ? 'expanded' : ''}" data-idx="${i}">
+      <td><span class="company-name" onclick="toggleDetail(${i})">${esc(r.name)}</span></td>
+      <td>${esc(r.jurisdiction)}</td>
+      <td>${r.score}<span class="score-bar"><span class="score-fill" style="width:${r.score}%;background:${color(r.score)}"></span></span></td>
+      <td><span class="risk-badge ${r.risk}">${r.risk}</span></td>
+      <td>${r.sanctionsHit ? '<span class="risk-badge sanctions-hit">HIT</span>' : r.details.sanctions.checked ? '<span style="color:var(--green)">Clear</span>' : '<span style="color:#666">-</span>'}</td>
+      <td class="flags ${r.flags.some(f => f.includes('🚨')) ? '' : 'flags-warn'}">${r.flags.length ? r.flags.join(', ') : '-'}</td>
     </tr>
+    ${expandedRow === i ? renderDetailPanel(r) : ''}
   `).join('');
 }
 
-function escapeHtml(text) {
+function renderDetailPanel(r) {
+  const d = r.details;
+  return `<tr><td colspan="6" class="detail-panel">
+    <div class="detail-grid">
+      <div class="detail-section">
+        <h4>ITA Sanctions Check</h4>
+        ${d.sanctions.error ? `<p class="value" style="color:var(--yellow)">Error: ${esc(d.sanctions.error)}</p>` :
+          d.sanctions.checked ?
+            (d.sanctions.hits.length ?
+              d.sanctions.hits.map(h => `<p class="value hit">${esc(h.name)} <small>(${esc(h.source || 'Unknown')})</small></p>`).join('') :
+              '<p class="value clear">✓ No matches found</p>') :
+          '<p class="value" style="color:#666">Not checked (no API key)</p>'}
+      </div>
+      <div class="detail-section">
+        <h4>Jurisdiction</h4>
+        <p>Country: <span class="value">${esc(d.jurisdiction.country)}</span></p>
+        <p>Risk: <span class="value" style="color:${d.jurisdiction.risk === 'high' ? 'var(--red)' : 'var(--green)'}">${d.jurisdiction.risk}</span></p>
+      </div>
+      <div class="detail-section">
+        <h4>Pattern Analysis</h4>
+        ${d.patterns.length ? d.patterns.map(p => `<p class="value">${esc(p)}</p>`).join('') : '<p class="value">No patterns detected</p>'}
+      </div>
+      <div class="detail-section">
+        <h4>All Flags</h4>
+        ${r.flags.length ? r.flags.map(f => `<p class="value" style="color:${f.includes('🚨') ? 'var(--red)' : 'var(--yellow)'}">${esc(f)}</p>`).join('') : '<p class="value clear">None</p>'}
+      </div>
+    </div>
+  </td></tr>`;
+}
+
+function toggleDetail(idx) {
+  expandedRow = expandedRow === idx ? null : idx;
+  renderResults();
+}
+
+function esc(text) {
   const div = document.createElement('div');
-  div.textContent = text;
+  div.textContent = text || '';
   return div.innerHTML;
 }
 
+// ============== EXPORT ==============
 function exportCSV() {
-  const rows = [['Company', 'Jurisdiction', 'Score', 'Risk', 'Flags']];
-  results.forEach(r => rows.push([r.name, r.jurisdiction, r.score, r.risk, r.flags.join('; ')]));
+  const rows = [['Company', 'Jurisdiction', 'Score', 'Risk Level', 'Sanctions Hit', 'Sanctions Matches', 'Flags']];
+  results.forEach(r => rows.push([
+    r.name,
+    r.jurisdiction,
+    r.score,
+    r.risk.toUpperCase(),
+    r.sanctionsHit ? 'YES' : 'NO',
+    r.details.sanctions.hits.map(h => h.name).join('; '),
+    r.flags.join('; ')
+  ]));
   const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
-  const blob = new Blob([csv], { type: 'text/csv' });
+  downloadFile(csv, 'company-risk-results.csv', 'text/csv');
+}
+
+function downloadFile(content, filename, type) {
+  const blob = new Blob([content], { type });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url;
-  a.download = 'company-risk-results.csv';
-  a.click();
+  a.href = url; a.download = filename; a.click();
   URL.revokeObjectURL(url);
 }
 
+// ============== UTILITIES ==============
 function reset() {
-  companies = [];
-  results = [];
+  companies = []; results = []; expandedRow = null;
   resultsSection.classList.add('hidden');
   uploadSection.classList.remove('hidden');
   fileInput.value = '';
   searchInput.value = '';
+  riskFilter.value = 'all';
 }
 
 function loadDemo() {
-  const demoData = `company_name,jurisdiction
-Apple Inc.,US
-Microsoft Corporation,US
-Alphabet Inc.,US
-HSBC Holdings plc,GB
-Shell Trading International Limited,GB
-Acme Offshore Holdings Ltd,KY
-Caribbean Trading Company,VG
-Panama Global Investments SA,PA
-Seychelles Import Export Ltd,SC
-Dubai International Trading FZE,AE
-Hong Kong Ventures Limited,HK
-Singapore Pte Holdings,SG
-Belize Development Corp,BZ
-Marshall Islands Shipping LLC,MH
-Swiss Holding AG,CH
-Cayman Fund Partners LP,KY
-BVI Asset Management Ltd,VG
-Bermuda Reinsurance Corp,BM
-Jersey Trust Services,JE
-Guernsey Holdings Ltd,GG`;
-  processCSV(demoData);
+  processCSV(`company_name,jurisdiction,address
+Apple Inc.,US,"One Apple Park Way, Cupertino, CA"
+Microsoft Corporation,US,"One Microsoft Way, Redmond, WA"
+HSBC Holdings plc,GB,"8 Canada Square, London"
+Acme Offshore Holdings Ltd,KY,"PO Box 309, Grand Cayman"
+Caribbean Trading Company,VG,"Tortola, British Virgin Islands"
+Panama Global Investments SA,PA,"Calle 50, Panama City"
+Rosoboronexport,RU,"Moscow, Russia"
+Huawei Technologies,CN,"Shenzhen, China"
+Korea Mining Development Trading,KP,"Pyongyang, DPRK"
+Sberbank,RU,"Moscow, Russia"
+Dubai International Trading FZE,AE,"Jebel Ali, Dubai"
+Marshall Islands Shipping LLC,MH,"Majuro, Marshall Islands"
+Swiss Holding AG,CH,"Zurich, Switzerland"
+Walmart Inc,US,"Bentonville, Arkansas"
+Toyota Motor Corporation,JP,"Toyota City, Japan"`);
 }
+
+// ============== CONFIG MODAL ==============
+function showConfig() {
+  $('itaKey').value = config.itaKey;
+  $('corsProxy').value = config.corsProxy;
+  $('configModal').classList.remove('hidden');
+}
+
+function closeConfig() {
+  $('configModal').classList.add('hidden');
+}
+
+function saveConfig() {
+  config.itaKey = $('itaKey').value.trim();
+  config.corsProxy = $('corsProxy').value.trim();
+  localStorage.setItem('itaKey', config.itaKey);
+  localStorage.setItem('corsProxy', config.corsProxy);
+  updateApiStatus();
+  closeConfig();
+}
+
+$('configModal').onclick = e => { if (e.target.id === 'configModal') closeConfig(); };
 </script>
 </body>
 </html>
