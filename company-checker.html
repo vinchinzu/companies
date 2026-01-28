@@ -98,7 +98,7 @@ tr.expanded td { background: rgba(99,91,255,0.05); }
   <header>
     <div>
       <h1>Company Risk Checker</h1>
-      <p class="subtitle">ITA Consolidated Screening List &amp; Risk Assessment</p>
+      <p class="subtitle">Consolidated Screening List &amp; Risk Assessment</p>
     </div>
     <div class="header-btns">
       <span class="api-status" id="apiStatus"></span>
@@ -106,10 +106,6 @@ tr.expanded td { background: rgba(99,91,255,0.05); }
     </div>
   </header>
 
-  <div id="warningBox" class="warning-box hidden">
-    <h3>⚠️ API Key Required</h3>
-    <p>Configure your ITA API key to enable sanctions screening. Click "API Settings" above.</p>
-  </div>
 
   <div id="uploadSection">
     <div class="upload-zone" id="dropZone">
@@ -169,15 +165,11 @@ tr.expanded td { background: rgba(99,91,255,0.05); }
 
 <div id="configModal" class="modal-overlay hidden">
   <div class="modal">
-    <h2>API Configuration</h2>
+    <h2>Settings</h2>
 
-    <label>ITA API Key (trade.gov) *</label>
-    <input type="text" id="itaKey" placeholder="Your subscription key">
-    <small>Get free key at <a href="https://developer.trade.gov" target="_blank">developer.trade.gov</a> → Subscribe to "Consolidated Screening List"</small>
-
-    <label>CORS Proxy URL *</label>
+    <label>CORS Proxy URL</label>
     <input type="text" id="corsProxy" value="https://corsproxy.io/?">
-    <small>Required to call APIs from browser. Default usually works. Alternatives: <code>https://api.allorigins.win/raw?url=</code></small>
+    <small>Used to fetch CSL data. Default usually works. Alternatives: <code>https://api.allorigins.win/raw?url=</code></small>
 
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeConfig()">Cancel</button>
@@ -189,7 +181,6 @@ tr.expanded td { background: rgba(99,91,255,0.05); }
 <script>
 // ============== CONFIG ==============
 let config = {
-  itaKey: localStorage.getItem('itaKey') || '',
   corsProxy: localStorage.getItem('corsProxy') || 'https://corsproxy.io/?'
 };
 
@@ -224,15 +215,10 @@ updateApiStatus();
 function updateApiStatus() {
   const status = $('apiStatus');
   const warning = $('warningBox');
-  if (config.itaKey) {
-    status.textContent = '✓ API Ready';
-    status.className = 'api-status ok';
-    warning.classList.add('hidden');
-  } else {
-    status.textContent = '✗ No API Key';
-    status.className = 'api-status missing';
-    warning.classList.remove('hidden');
-  }
+  // CSL data is public, no API key needed
+  status.textContent = '✓ Ready';
+  status.className = 'api-status ok';
+  warning.classList.add('hidden');
 }
 
 // ============== FILE HANDLING ==============
@@ -301,21 +287,24 @@ async function processCSV(text) {
 async function scoreAllCompanies() {
   results = [];
 
+  // Load CSL data first
+  await loadCSLData();
+
   for (let i = 0; i < companies.length; i++) {
     $('progressFill').style.width = ((i + 1) / companies.length * 100) + '%';
-    $('statusText').textContent = `Processing ${i + 1}/${companies.length}: ${companies[i].name}`;
+    $('statusText').textContent = `Checking ${i + 1}/${companies.length}: ${companies[i].name}`;
 
-    const result = await scoreCompany(companies[i]);
+    const result = scoreCompany(companies[i]);
     results.push(result);
 
-    // Small delay between API calls
-    await new Promise(r => setTimeout(r, 100));
+    // Small delay to keep UI responsive
+    if (i % 10 === 0) await new Promise(r => setTimeout(r, 10));
   }
 
   results.sort((a, b) => a.score - b.score);
 }
 
-async function scoreCompany(company) {
+function scoreCompany(company) {
   const nameLower = company.name.toLowerCase();
   const jurLower = (company.jurisdiction || '').toLowerCase().replace(/[^a-z]/g, '');
 
@@ -327,19 +316,13 @@ async function scoreCompany(company) {
     patterns: []
   };
 
-  // 1. ITA SANCTIONS CHECK
-  if (config.itaKey && config.corsProxy) {
-    try {
-      const itaResult = await checkITASanctions(company.name);
-      details.sanctions.checked = true;
-      if (itaResult.total > 0) {
-        score -= 50;
-        flags.push('🚨 SANCTIONS HIT');
-        details.sanctions.hits = itaResult.results.slice(0, 5);
-      }
-    } catch (e) {
-      details.sanctions.error = e.message;
-    }
+  // 1. CSL SANCTIONS CHECK
+  const cslResult = searchCSL(company.name);
+  details.sanctions.checked = true;
+  if (cslResult.total > 0) {
+    score -= 50;
+    flags.push('🚨 SANCTIONS HIT');
+    details.sanctions.hits = cslResult.results;
   }
 
   // 2. JURISDICTION RISK
@@ -392,32 +375,68 @@ async function scoreCompany(company) {
   };
 }
 
-// ============== ITA API ==============
-async function checkITASanctions(companyName) {
-  // ITA Consolidated Screening List endpoint
-  const baseUrl = 'https://api.trade.gov/gateway/v1/consolidated_screening_list/search';
-  const params = new URLSearchParams({
-    name: companyName,
-    fuzzy_name: 'true',
-    size: '10'
-  });
+// ============== CSL DATA ==============
+let cslData = null;
+let cslLoading = false;
 
-  const targetUrl = `${baseUrl}?${params}`;
-  const proxyUrl = config.corsProxy + encodeURIComponent(targetUrl);
-
-  const resp = await fetch(proxyUrl, {
-    method: 'GET',
-    headers: {
-      'subscription-key': config.itaKey
-    }
-  });
-
-  if (!resp.ok) {
-    const text = await resp.text();
-    throw new Error(`HTTP ${resp.status}: ${text.slice(0, 100)}`);
+async function loadCSLData() {
+  if (cslData) return cslData;
+  if (cslLoading) {
+    // Wait for loading to complete
+    while (cslLoading) await new Promise(r => setTimeout(r, 100));
+    return cslData;
   }
 
-  return await resp.json();
+  cslLoading = true;
+  const cslUrl = 'https://data.trade.gov/downloadable_consolidated_screening_list/v1/consolidated.json';
+  const proxyUrl = config.corsProxy + encodeURIComponent(cslUrl);
+
+  console.log('Loading CSL data...');
+  $('statusText').textContent = 'Loading sanctions list (first time only)...';
+
+  try {
+    const resp = await fetch(proxyUrl);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    cslData = await resp.json();
+    console.log(`CSL loaded: ${cslData.results?.length || 0} entries`);
+  } catch (e) {
+    console.error('Failed to load CSL:', e);
+    cslData = { results: [] };
+  }
+
+  cslLoading = false;
+  return cslData;
+}
+
+function searchCSL(companyName) {
+  if (!cslData?.results) return { total: 0, results: [] };
+
+  const searchLower = companyName.toLowerCase();
+  const matches = cslData.results.filter(entry => {
+    const name = (entry.name || '').toLowerCase();
+    const altNames = (entry.alt_names || []).map(n => n.toLowerCase());
+
+    // Check exact or partial match
+    if (name.includes(searchLower) || searchLower.includes(name)) return true;
+    if (altNames.some(alt => alt.includes(searchLower) || searchLower.includes(alt))) return true;
+
+    // Check words overlap for fuzzy matching
+    const searchWords = searchLower.split(/\s+/).filter(w => w.length > 2);
+    const nameWords = name.split(/\s+/);
+    const matchCount = searchWords.filter(sw => nameWords.some(nw => nw.includes(sw) || sw.includes(nw))).length;
+    return matchCount >= 2 || (matchCount >= 1 && searchWords.length <= 2);
+  });
+
+  return {
+    total: matches.length,
+    results: matches.slice(0, 10).map(m => ({
+      name: m.name,
+      source: m.source,
+      type: m.type,
+      programs: m.programs || [],
+      country: m.country || m.addresses?.[0]?.country || 'Unknown'
+    }))
+  };
 }
 
 // ============== RENDER ==============
@@ -456,13 +475,13 @@ function renderDetailPanel(r) {
   return `<tr><td colspan="6" class="detail-panel">
     <div class="detail-grid">
       <div class="detail-section">
-        <h4>ITA Sanctions Check</h4>
+        <h4>CSL Sanctions Check</h4>
         ${d.sanctions.error ? `<p class="value" style="color:var(--yellow)">Error: ${esc(d.sanctions.error)}</p>` :
           d.sanctions.checked ?
             (d.sanctions.hits.length ?
               d.sanctions.hits.map(h => `<p class="value hit">${esc(h.name)} <small>(${esc(h.source || 'Unknown')})</small></p>`).join('') :
               '<p class="value clear">✓ No matches found</p>') :
-          '<p class="value" style="color:#666">Not checked (no API key)</p>'}
+          '<p class="value" style="color:#666">Not checked</p>'}
       </div>
       <div class="detail-section">
         <h4>Jurisdiction</h4>
@@ -547,7 +566,6 @@ Toyota Motor Corporation,JP,"Toyota City, Japan"`);
 
 // ============== CONFIG MODAL ==============
 function showConfig() {
-  $('itaKey').value = config.itaKey;
   $('corsProxy').value = config.corsProxy;
   $('configModal').classList.remove('hidden');
 }
@@ -557,11 +575,9 @@ function closeConfig() {
 }
 
 function saveConfig() {
-  config.itaKey = $('itaKey').value.trim();
   config.corsProxy = $('corsProxy').value.trim();
-  localStorage.setItem('itaKey', config.itaKey);
   localStorage.setItem('corsProxy', config.corsProxy);
-  updateApiStatus();
+  cslData = null; // Force reload with new proxy
   closeConfig();
 }
 
