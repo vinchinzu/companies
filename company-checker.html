@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Risk Checker</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; min-height: 100vh; padding: 2rem; }
+.container { max-width: 1200px; margin: 0 auto; }
+h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #fff; }
+.subtitle { color: #888; margin-bottom: 2rem; }
+.upload-zone { border: 2px dashed #333; border-radius: 12px; padding: 3rem; text-align: center; margin-bottom: 2rem; cursor: pointer; transition: all 0.2s; }
+.upload-zone:hover, .upload-zone.dragover { border-color: #635bff; background: rgba(99,91,255,0.05); }
+.upload-zone input { display: none; }
+.upload-icon { font-size: 3rem; margin-bottom: 1rem; }
+.formats { margin-top: 1rem; }
+.formats span { background: #1a1a24; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.8rem; margin: 0 0.25rem; color: #888; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.stat { background: linear-gradient(145deg, #16161f, #1a1a26); border: 1px solid #222; border-radius: 12px; padding: 1.25rem; }
+.stat-value { font-size: 2rem; font-weight: 700; }
+.stat-label { font-size: 0.8rem; color: #888; text-transform: uppercase; margin-top: 0.25rem; }
+.stat.high .stat-value { color: #ff5252; }
+.stat.medium .stat-value { color: #ffbb00; }
+.stat.low .stat-value { color: #00d4aa; }
+table { width: 100%; border-collapse: collapse; background: #12121a; border-radius: 12px; overflow: hidden; }
+th { background: #1a1a24; padding: 1rem; text-align: left; font-size: 0.75rem; text-transform: uppercase; color: #888; }
+td { padding: 1rem; border-bottom: 1px solid #222; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(99,91,255,0.03); }
+.risk-badge { display: inline-block; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+.risk-badge.high { background: rgba(255,82,82,0.15); color: #ff5252; }
+.risk-badge.medium { background: rgba(255,187,0,0.15); color: #ffbb00; }
+.risk-badge.low { background: rgba(0,212,170,0.15); color: #00d4aa; }
+.score-bar { width: 60px; height: 6px; background: #222; border-radius: 3px; overflow: hidden; }
+.score-fill { height: 100%; border-radius: 3px; }
+.flags { font-size: 0.8rem; color: #ff5252; }
+.btn { background: linear-gradient(135deg, #635bff, #4f46e5); color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: transform 0.1s; }
+.btn:hover { transform: translateY(-1px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.actions { margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; }
+.search { background: #1a1a24; border: 1px solid #333; border-radius: 8px; padding: 0.6rem 1rem; color: #fff; width: 250px; }
+.search:focus { outline: none; border-color: #635bff; }
+.hidden { display: none; }
+.demo-btn { background: #1a1a24; border: 1px solid #333; }
+.demo-btn:hover { border-color: #635bff; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Company Risk Checker</h1>
+  <p class="subtitle">Offline company verification - no server required</p>
+
+  <div id="uploadSection">
+    <div class="upload-zone" id="dropZone">
+      <div class="upload-icon">📁</div>
+      <div>Drop CSV file here or click to browse</div>
+      <div class="formats"><span>.csv</span></div>
+      <input type="file" id="fileInput" accept=".csv">
+    </div>
+    <div style="text-align:center;margin-bottom:2rem;">
+      <span style="color:#666">or</span>
+      <button class="btn demo-btn" onclick="loadDemo()" style="margin-left:1rem;">Load Demo Data</button>
+    </div>
+  </div>
+
+  <div id="resultsSection" class="hidden">
+    <div class="stats">
+      <div class="stat"><div class="stat-value" id="totalCount">0</div><div class="stat-label">Total</div></div>
+      <div class="stat high"><div class="stat-value" id="highCount">0</div><div class="stat-label">High Risk</div></div>
+      <div class="stat medium"><div class="stat-value" id="mediumCount">0</div><div class="stat-label">Medium Risk</div></div>
+      <div class="stat low"><div class="stat-value" id="lowCount">0</div><div class="stat-label">Low Risk</div></div>
+    </div>
+
+    <div class="actions">
+      <input type="text" class="search" id="searchInput" placeholder="Search companies...">
+      <button class="btn" onclick="exportCSV()">Export CSV</button>
+      <button class="btn demo-btn" onclick="reset()">New Upload</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Jurisdiction</th>
+          <th>Score</th>
+          <th>Risk</th>
+          <th>Flags</th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// Tax haven jurisdictions
+const TAX_HAVENS = new Set(['ky','vg','pa','bz','sc','ae','hk','mh','ch','li','lu','mc','je','gg','im','bm','an','bs','ai','cayman','virgin','panama','belize','seychelles','marshall','bermuda','bahamas','jersey','guernsey','liechtenstein','monaco','luxembourg']);
+
+// Suspicious name patterns
+const SHELL_PATTERNS = [/offshore/i, /holdings?$/i, /international$/i, /global$/i, /ventures?$/i, /trading$/i, /investments?$/i, /partners?$/i, /capital$/i, /assets?$/i, /trust$/i, /limited$/i, /ltd$/i, /llc$/i, /corp$/i];
+const LEGIT_PATTERNS = [/inc\.?$/i, /incorporated$/i, /plc$/i, /gmbh$/i, /ag$/i, /sa$/i, /nv$/i];
+const MAJOR_CORPS = ['apple','microsoft','google','alphabet','amazon','tesla','meta','facebook','nvidia','oracle','ibm','intel','cisco','adobe','salesforce','walmart','costco','target','home depot','lowes','mcdonalds','starbucks','nike','coca-cola','pepsi','procter','johnson','pfizer','merck','jpmorgan','chase','bank of america','wells fargo','goldman','morgan stanley','visa','mastercard','american express','berkshire','exxon','chevron','shell','bp','toyota','ford','general motors','boeing','lockheed','raytheon','disney','netflix','comcast','att','verizon','tmobile'];
+
+let companies = [];
+let results = [];
+
+// DOM elements
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const uploadSection = document.getElementById('uploadSection');
+const resultsSection = document.getElementById('resultsSection');
+const resultsBody = document.getElementById('resultsBody');
+const searchInput = document.getElementById('searchInput');
+
+// File handling
+dropZone.onclick = () => fileInput.click();
+dropZone.ondragover = e => { e.preventDefault(); dropZone.classList.add('dragover'); };
+dropZone.ondragleave = () => dropZone.classList.remove('dragover');
+dropZone.ondrop = e => { e.preventDefault(); dropZone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); };
+fileInput.onchange = e => handleFile(e.target.files[0]);
+searchInput.oninput = () => renderResults();
+
+function handleFile(file) {
+  if (!file || !file.name.endsWith('.csv')) { alert('Please upload a CSV file'); return; }
+  const reader = new FileReader();
+  reader.onload = e => processCSV(e.target.result);
+  reader.readAsText(file);
+}
+
+function processCSV(text) {
+  const lines = text.trim().split('\n');
+  if (lines.length < 2) { alert('CSV must have header and data rows'); return; }
+
+  const headers = parseCSVLine(lines[0]).map(h => h.toLowerCase().trim());
+  const nameCol = headers.findIndex(h => h.includes('company') || h.includes('name') || h.includes('entity'));
+  const jurCol = headers.findIndex(h => h.includes('jurisdiction') || h.includes('country') || h.includes('jur'));
+
+  if (nameCol === -1) { alert('Could not find company name column'); return; }
+
+  companies = [];
+  for (let i = 1; i < lines.length; i++) {
+    const cols = parseCSVLine(lines[i]);
+    if (cols[nameCol]) {
+      companies.push({
+        name: cols[nameCol].trim(),
+        jurisdiction: jurCol !== -1 ? (cols[jurCol] || '').trim() : ''
+      });
+    }
+  }
+
+  scoreCompanies();
+  showResults();
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const char = line[i];
+    if (char === '"') { inQuotes = !inQuotes; }
+    else if (char === ',' && !inQuotes) { result.push(current); current = ''; }
+    else { current += char; }
+  }
+  result.push(current);
+  return result.map(s => s.replace(/^"|"$/g, '').trim());
+}
+
+function scoreCompanies() {
+  results = companies.map(c => {
+    let score = 50;
+    const flags = [];
+    const nameLower = c.name.toLowerCase();
+    const jurLower = c.jurisdiction.toLowerCase().replace(/[^a-z]/g, '');
+
+    // Major corporation bonus
+    if (MAJOR_CORPS.some(corp => nameLower.includes(corp))) {
+      score += 40;
+    }
+
+    // Tax haven penalty
+    if (TAX_HAVENS.has(jurLower) || [...TAX_HAVENS].some(th => jurLower.includes(th))) {
+      score -= 25;
+      flags.push('Tax haven jurisdiction');
+    }
+
+    // Shell company name patterns
+    let shellScore = 0;
+    SHELL_PATTERNS.forEach(p => { if (p.test(c.name)) shellScore++; });
+    if (shellScore >= 2) {
+      score -= 15;
+      flags.push('Shell company naming pattern');
+    } else if (shellScore === 1) {
+      score -= 5;
+    }
+
+    // Legitimate name patterns
+    if (LEGIT_PATTERNS.some(p => p.test(c.name))) {
+      score += 5;
+    }
+
+    // Very short or very long names
+    if (c.name.length < 5) {
+      score -= 10;
+      flags.push('Unusually short name');
+    }
+    if (c.name.length > 80) {
+      score -= 5;
+      flags.push('Unusually long name');
+    }
+
+    // No jurisdiction provided
+    if (!c.jurisdiction) {
+      score -= 5;
+    }
+
+    // Clamp score
+    score = Math.max(5, Math.min(95, score));
+
+    return {
+      name: c.name,
+      jurisdiction: c.jurisdiction || 'Unknown',
+      score,
+      risk: score >= 70 ? 'low' : score >= 40 ? 'medium' : 'high',
+      flags
+    };
+  });
+
+  results.sort((a, b) => a.score - b.score);
+}
+
+function showResults() {
+  uploadSection.classList.add('hidden');
+  resultsSection.classList.remove('hidden');
+  renderResults();
+}
+
+function renderResults() {
+  const search = searchInput.value.toLowerCase();
+  const filtered = search ? results.filter(r => r.name.toLowerCase().includes(search)) : results;
+
+  document.getElementById('totalCount').textContent = results.length;
+  document.getElementById('highCount').textContent = results.filter(r => r.risk === 'high').length;
+  document.getElementById('mediumCount').textContent = results.filter(r => r.risk === 'medium').length;
+  document.getElementById('lowCount').textContent = results.filter(r => r.risk === 'low').length;
+
+  const color = s => s >= 70 ? '#00d4aa' : s >= 40 ? '#ffbb00' : '#ff5252';
+
+  resultsBody.innerHTML = filtered.map(r => `
+    <tr>
+      <td><strong>${escapeHtml(r.name)}</strong></td>
+      <td>${escapeHtml(r.jurisdiction)}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:0.5rem;">
+          <span>${r.score}</span>
+          <div class="score-bar"><div class="score-fill" style="width:${r.score}%;background:${color(r.score)}"></div></div>
+        </div>
+      </td>
+      <td><span class="risk-badge ${r.risk}">${r.risk.toUpperCase()}</span></td>
+      <td class="flags">${r.flags.join(', ') || '-'}</td>
+    </tr>
+  `).join('');
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function exportCSV() {
+  const rows = [['Company', 'Jurisdiction', 'Score', 'Risk', 'Flags']];
+  results.forEach(r => rows.push([r.name, r.jurisdiction, r.score, r.risk, r.flags.join('; ')]));
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'company-risk-results.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function reset() {
+  companies = [];
+  results = [];
+  resultsSection.classList.add('hidden');
+  uploadSection.classList.remove('hidden');
+  fileInput.value = '';
+  searchInput.value = '';
+}
+
+function loadDemo() {
+  const demoData = `company_name,jurisdiction
+Apple Inc.,US
+Microsoft Corporation,US
+Alphabet Inc.,US
+HSBC Holdings plc,GB
+Shell Trading International Limited,GB
+Acme Offshore Holdings Ltd,KY
+Caribbean Trading Company,VG
+Panama Global Investments SA,PA
+Seychelles Import Export Ltd,SC
+Dubai International Trading FZE,AE
+Hong Kong Ventures Limited,HK
+Singapore Pte Holdings,SG
+Belize Development Corp,BZ
+Marshall Islands Shipping LLC,MH
+Swiss Holding AG,CH
+Cayman Fund Partners LP,KY
+BVI Asset Management Ltd,VG
+Bermuda Reinsurance Corp,BM
+Jersey Trust Services,JE
+Guernsey Holdings Ltd,GG`;
+  processCSV(demoData);
+}
+</script>
+</body>
+</html>
